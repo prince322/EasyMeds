@@ -1,12 +1,13 @@
 from django.db import models
 
 
-
 class UserRole(models.Model):
     id = models.AutoField(primary_key=True)
     role = models.CharField(max_length=225,null=True,unique=True)
+
     def __str__(self):
         return self.role
+
 
 class RoleDetails(models.Model):
     role = models.ForeignKey(UserRole, on_delete=models.CASCADE)
@@ -22,9 +23,11 @@ class RoleDetails(models.Model):
     active = models.CharField(max_length=225,default="")
     verify_link = models.CharField(max_length=225,default="",null=True)
     auth_token = models.CharField(max_length=225,default="",null=True)
-class loginDetails(models.Model):
+
+
+class LoginDetails(models.Model):
     id = models.AutoField(primary_key=True)
-    email= models.CharField(max_length=225,default="")
-    log_in = models.CharField(max_length=225, default="")
-    log_out = models.CharField(max_length=225, default="")
-    address = models.CharField(max_length=225, default="",null=True)
+    email= models.CharField(max_length=225,default="", null=True)
+    log_in = models.CharField(max_length=225, default="", null=True)
+    log_out = models.CharField(max_length=225, default="", null=True)
+    address = models.CharField(max_length=225, default="", null=True)

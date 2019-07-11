@@ -1,0 +1,43 @@
+{% extends "masterPage.html" %}
+{% block title %}
+Registration
+{% endblock %}
+{% block content %}
+<div class="pura">
+    <h1 class="create">Create new account</h1>
+    <div class="registration">
+        <form method="post">
+        {% csrf_token %}
+        <div class="role form_group">
+            <label class="role"><i>Role:</i></label>
+            <select name="role_id" >
+                <option value="0">Select</option>
+                {% if data %}
+                {% for i in data %}
+                <option value="{{i.id}}">{{i.role}}</option>
+                {% endfor %}
+                {% else %}
+                <option> no data found </option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="form_group">
+            <label class="le"><i>Username:</i></label>
+            <input type="text" name="username" class="pu in">
+        </div>
+        <div class="form_group">
+            <label class="le"><i>Email:</i></label>
+            <input type="text" name="email" class="pu in">
+        </div>
+        <div class="form_group">
+            <label class="le"><i>Gender:</i></label>
+            <input type="radio" name="gender" value="Male"><label class="l">Male</label>
+            <input type="radio" name="gender" value="Female"><label class="l">Female</label>
+        </div>
+        <div class="form_group">
+            <input type="submit" value="Submit" class="pu submit">
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

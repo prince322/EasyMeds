@@ -17,6 +17,7 @@ font-family: 'Open Sans', sans-serif!important;
 	font-size: 100%;
 	background: #ffffff;
 }
+
 a:hover{
  text-decoration:none;
  
@@ -29,7 +30,7 @@ input[type="button"],input[type="submit"],li.parallelogram{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-   margin:0;	
+    margin:0;
 }	
 p {
     margin: 0;
@@ -3262,6 +3263,8 @@ float:left;
 	}
 	.top_banner.two {
 		min-height:100px;
+
+
 	}
 	.sub-hd-inner {
 		margin: 0 auto;
@@ -3449,3 +3452,4 @@ float:left;
 		padding: 0 5px!important;
 	}
 }
+

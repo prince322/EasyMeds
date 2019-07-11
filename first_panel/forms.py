@@ -1,6 +1,7 @@
 from django import forms
 from first_panel.models import RoleDetails
 
+
 class RoleDetailsForm(forms.ModelForm):
     class Meta:
         model = RoleDetails

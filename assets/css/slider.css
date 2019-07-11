@@ -166,6 +166,7 @@ summary { display: block; }
   position: relative;
   display: block;
   overflow: hidden;
+
 }
 
 .sleekslider .slide {
@@ -182,6 +183,7 @@ summary { display: block; }
   background-size: cover;
   z-index: 1;
   content: "";
+
 }
 
 .sleekslider .slide.active { z-index: 3; }

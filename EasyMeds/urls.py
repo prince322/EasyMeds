@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from first_panel import views
 from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
+from first_panel import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('first_panel.urls')),
-    url(r'^text/$', views.text),
+    url(r'^$', views.index),
     url(r'^login/$', views.login),
+    url(r'^registration_page/$', views.registration),
+    url(r'^update_password/$', views.update_password),
+    url(r'^forget_password/$', views.forgot_password),
     url(r'^verify_link/$',views.verify_link),
-    url(r'^admin_index/$', views.index),
-    url(r'^password/$', views.password)
+    url(r'^', include('backend_panel.urls')),
+    #url(r'^forgot_password/$', views.forgot_password),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

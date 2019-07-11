@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diseases</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label>Disease Name:</label>
+            <input type="text" name="dis_name">
+        </div>
+        <div>
+            <label>Precautions:</label>
+            <input type="text" name="dis_prec">
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
