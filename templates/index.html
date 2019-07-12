@@ -19,23 +19,23 @@ EasyMeds
 		 <div class="log">
 			 <form method="post" >
 				 {% csrf_token %}
-				 <div>
+				 <div class="lab">
 					 <label>ENTER USERNAME:</label>
-					 <input type="text" name="username" placeholder="username" >
-				 </div>
-				 <div>
+					 <input type="text" name="username"  >
+				 </div >
+				 <div class="lab">
 					 <label>ENTER PASSWORD:</label>
-					 <input type="text" name="password" placeholder="password">
+					 <input type="text" name="password" >
 				 </div>
-				 <div>
+				 <div class="lab">
 					 <input type="submit"  value="login">
 				 </div>
 			 </form>
 			 <div>
-				 <a href="forget_password">Forgotten-password</a>
+				 <a href="forget_password" class="for">Forgotten-password</a>
 			 </div>
 			 <div>
-				 <a href="/registration_page/">Sign-up</a>
+				 <a href="/registration_page/" class="for">Sign-up</a>
 			 </div>
 		 </div>
 

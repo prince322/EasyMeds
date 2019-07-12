@@ -27,6 +27,13 @@
 				});
 			});
 </script>
+<script>
+	$(document).ready(function(){
+  $(".toggle").click(function(){
+    $(".log").toggle();
+  });
+});
+</script>
 
 
 </head>
@@ -81,7 +88,7 @@
 									<ul class="nav navbar-nav menu__list">
 										<li class="menu__item menu__item--current"><a href="{% url 'first_panel:index' %}" class="menu__link"><span class="menu__helper">Home</span></a></li>
 										<li class="menu__item"><a href="about.html" class="menu__link"><span class="menu__helper">About Us</span></a></li>
-										<li class="menu__item"><a href="/login/" class="menu__link"><span class="menu__helper">Login</span></a></li>
+										<li class="menu__item"><a href="#" class="menu__link toggle"><span class="menu__helper">Login</span></a></li>
 										<li class="menu__item"><a href="/registration_page/" class="menu__link"><span class="menu__helper">Register</span></a></li>
 										<li class="menu__item"><a href="contact.html" class="menu__link"><span class="menu__helper">Contact Us</span></a></li>
 									</ul>

@@ -88,12 +88,21 @@ border:none;
 outline:none;
 border-bottom:1px solid white;
 background:transparent;}
+
+
+/*login*/
 .log{
 height:200px;
 width:250px;
 position:absolute;
 left:930px;
 bottom:324px;
-background-color:yellow;
+background-color:rgba(60,30,30,0.89);
 padding:20px;
-z-index:1000;}
+z-index:1000;
+color:white;}
+.for{
+color:white;}
+.lab{
+margin-left:15px;
+margin-bottom:15px;}
