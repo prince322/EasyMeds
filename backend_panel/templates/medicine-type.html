@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine Category</title>
-</head>
-<body>
-<div>
-    <form method="post">
-        {% csrf_token %}
-        <div>
-            <label>
-                Add Medicine Category:
-            </label>
-            <input type="text" name="med_category">
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Add Medicine Category
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Add Medicine Category</span>
         </div>
-        <div>
-            <input type="submit" value="add">
+        <div class="col-sm-offset-3 col-sm-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" class="form-control" name="med_category" placeholder="Category Name">
+                </div>
+                <div>
+                    <input type="submit" value="Add Category" class="btn btn-primary btn-block">
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
-</body>
-</html>
+
+{% endblock %}

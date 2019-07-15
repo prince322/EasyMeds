@@ -8,6 +8,7 @@ from miscFiles.genericFunction import generate_string,link_send,otp_generate,otp
 def index(request):
     return render(request, "index.html")
 
+
 def registration(request):
     data = UserRole.objects.all()
     if request.method == "POST":
@@ -32,31 +33,25 @@ def registration(request):
 
 def login(request):
     if request.method == "POST":
+        return HttpResponse("done")
         get_email= request.POST['username']
         get_password = request.POST['password']
         try:
             data = RoleDetails.objects.get(email=get_email)
             user_password=data.password
-            db_active = data.active
-            db_verify_link = data.verify_link
             role = data.role_id
             if check_password(get_password, user_password):
-                if db_active == "0" and db_verify_link!= "":
-                    return HttpResponse("please do verify your email")
-                elif db_active == "1":
-
-                    request.session['email'] = get_email
-
-                    request.session['name'] = data.name
-                    if role == 1:
-                        return render(request,"adminindex.html")
-                    elif role == 2:
-                        pass
+                request.session['authenticate'] = True
+                request.session['email'] = data.email
+                request.session['name'] = data.name
+                request.session['role'] = data.role
+                if role == 1:
+                    return redirect("/adminindex/")
             else:
                 return HttpResponse("password not valid")
         except:
             return  HttpResponse("<h1>Email not valid</h1>")
-    return render(request,"login.html")
+    return render(request,"index.html")
 
 
 def verify_link(request):

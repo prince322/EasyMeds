@@ -1,26 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Diseases</title>
-</head>
-<body>
-<div>
-    <form method="post">
-        {% csrf_token %}
-        <div>
-            <label>Disease Name:</label>
-            <input type="text" name="dis_name">
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Add Diseases
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Add Diseases</span>
         </div>
-        <div>
-            <label>Precautions:</label>
-            <input type="text" name="dis_prec">
-        </div>
-        <div>
-            <input type="submit" value="submit">
-        </div>
-    </form>
+        <div class="col-sm-offset-3 col-sm-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Disease Name</label>
+                    <input type="text" class="form-control" name="dis_name" placeholder="Disease Name">
+                </div>
+                <div class="form-group">
+                    <label>Precautions:</label>
+                    <input type="text" class="form-control" name="dis_prec" placeholder="Precautions">
+                </div>
+                <div>
+                    <input type="submit" value="Add_diseases" class="btn btn-primary btn-block">
+                </div>
+            </form>
+    </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

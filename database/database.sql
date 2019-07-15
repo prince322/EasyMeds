@@ -164,10 +164,12 @@ CREATE TABLE IF NOT EXISTS `backend_panel_diseases` (
   `dis_name` varchar(225) NOT NULL,
   `precaution` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table easymeds_db.backend_panel_diseases: ~0 rows (approximately)
+-- Dumping data for table easymeds_db.backend_panel_diseases: ~1 rows (approximately)
 /*!40000 ALTER TABLE `backend_panel_diseases` DISABLE KEYS */;
+INSERT INTO `backend_panel_diseases` (`id`, `dis_name`, `precaution`) VALUES
+	(1, 'Acne', 'Clean properly by water');
 /*!40000 ALTER TABLE `backend_panel_diseases` ENABLE KEYS */;
 
 -- Dumping structure for table easymeds_db.backend_panel_medicinedetails
@@ -181,10 +183,12 @@ CREATE TABLE IF NOT EXISTS `backend_panel_medicinedetails` (
   PRIMARY KEY (`id`),
   KEY `backend_panel_medici_cat_id_01e84755_fk_backend_p` (`cat_id`),
   CONSTRAINT `backend_panel_medici_cat_id_01e84755_fk_backend_p` FOREIGN KEY (`cat_id`) REFERENCES `backend_panel_medicinescategory` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table easymeds_db.backend_panel_medicinedetails: ~0 rows (approximately)
+-- Dumping data for table easymeds_db.backend_panel_medicinedetails: ~1 rows (approximately)
 /*!40000 ALTER TABLE `backend_panel_medicinedetails` DISABLE KEYS */;
+INSERT INTO `backend_panel_medicinedetails` (`id`, `med_name`, `image`, `price`, `description`, `cat_id`) VALUES
+	(1, 'paracetamol', 'king.PNG', '67', '20gmsalt', 1);
 /*!40000 ALTER TABLE `backend_panel_medicinedetails` ENABLE KEYS */;
 
 -- Dumping structure for table easymeds_db.backend_panel_medicinescategory
@@ -193,10 +197,12 @@ CREATE TABLE IF NOT EXISTS `backend_panel_medicinescategory` (
   `type` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `type` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table easymeds_db.backend_panel_medicinescategory: ~0 rows (approximately)
+-- Dumping data for table easymeds_db.backend_panel_medicinescategory: ~1 rows (approximately)
 /*!40000 ALTER TABLE `backend_panel_medicinescategory` DISABLE KEYS */;
+INSERT INTO `backend_panel_medicinescategory` (`id`, `type`) VALUES
+	(1, 'Allopathy');
 /*!40000 ALTER TABLE `backend_panel_medicinescategory` ENABLE KEYS */;
 
 -- Dumping structure for table easymeds_db.backend_panel_relation
@@ -223,10 +229,12 @@ CREATE TABLE IF NOT EXISTS `backend_panel_symptoms` (
   PRIMARY KEY (`id`),
   KEY `backend_panel_sympto_dis_id_68522e1d_fk_backend_p` (`dis_id`),
   CONSTRAINT `backend_panel_sympto_dis_id_68522e1d_fk_backend_p` FOREIGN KEY (`dis_id`) REFERENCES `backend_panel_diseases` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table easymeds_db.backend_panel_symptoms: ~0 rows (approximately)
+-- Dumping data for table easymeds_db.backend_panel_symptoms: ~1 rows (approximately)
 /*!40000 ALTER TABLE `backend_panel_symptoms` DISABLE KEYS */;
+INSERT INTO `backend_panel_symptoms` (`id`, `symptoms`, `dis_id`) VALUES
+	(1, 'u feel irritation', 1);
 /*!40000 ALTER TABLE `backend_panel_symptoms` ENABLE KEYS */;
 
 -- Dumping structure for table easymeds_db.django_admin_log

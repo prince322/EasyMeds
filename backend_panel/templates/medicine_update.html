@@ -1,0 +1,29 @@
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Update Medicine
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Update Medicine</span>
+        </div>
+        <div class="col-sm-12">
+            {% if data %}
+            {% for name in data %}
+            {{ name.med_name}}
+            {{name.image}}
+            {{name.price}}
+            {{name.description}}
+            <a href="?id={{name.id}}" class="btn btn-danger">Delete</a>
+            <a href="?id={{name.id}}" class="btn btn-warning">Edit</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,33 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Medicines Details</title>
-</head>
-<body>
-<div>
-    <form>
-        <div>
-            <label>Medicine Name:</label>
-            <input type="text" name="med_name">
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Add Medicine Category
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Add Medicine Category</span>
         </div>
-         <div>
-             <label>Add Image:</label>
-            <input type="file" name="med_image">
+        <div class="col-sm-offset-3 col-sm-6">
+            <form method="post">
+                {% csrf_token %}
+                 <div class="form-group">
+                     <label>Category:</label>
+                     <select name="category">
+                         <option value="0">Select</option>
+                         {% if data %}
+                         {% for i in data %}
+                         <option value="{{i.id}}">{{i.type}}</option>
+                         {% endfor %}
+                         {% endif %}
+                     </select>
+                 </div>
+                <div class="form-group">
+                    <label>Medicine Name</label>
+                    <input type="text" class="form-control" name="med_name" placeholder="Medicine Name">
+                </div>
+                <div class="form-group">
+                    <label>Add Image:</label>
+                    <input type="file" name="med_image" placeholder="Image">
+                </div>
+                <div class="form-group">
+                    <label>Price:</label>
+                    <input type="text" class="form-control" name="med_price" placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" class="form-control" name="med_desc" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add Medicine Details" class="btn btn-primary btn-block">
+                </div>
+            </form>
         </div>
-         <div>
-            <label>Price:</label>
-            <input type="text" name="med_price">
-        </div>
-         <div>
-            <label>Description:</label>
-            <input type="text" name="med_desc">
-        </div>
-        <div>
-            <input type="submit" value="submit">
-        </div>
-    </form>
+    </div>
 </div>
 
-</body>
-</html>
+{% endblock %}
