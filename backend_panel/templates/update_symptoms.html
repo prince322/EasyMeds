@@ -15,8 +15,8 @@ Update Symptoms
             {% if data %}
             {% for name in data %}
             {{ name.symptoms }}
-            <a href="?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="?id={{name.id}}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'backend_panel:delete_symptoms' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'backend_panel:edit_symptoms' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
             {% endfor %}
             {% endif %}
         </div>

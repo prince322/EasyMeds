@@ -18,8 +18,8 @@ Update Medicine
             {{name.image}}
             {{name.price}}
             {{name.description}}
-            <a href="?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="?id={{name.id}}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'backend_panel:delete_details' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'backend_panel:med_details' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
             {% endfor %}
             {% endif %}
         </div>

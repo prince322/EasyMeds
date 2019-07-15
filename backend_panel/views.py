@@ -74,3 +74,58 @@ def edit_med_category(request):
         update = MedicinesCategory(id=get_id, type=name)
         update.save(update_fields=['type'])
     return render(request, "medicine-type.html")
+def del_med_category(request):
+    get_id = request.GET['id']
+    data = MedicinesCategory.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_category/")
+
+def edit_med_details(request):
+    get_id = request.GET['id']
+    data = MedicinesCategory.objects.all()
+    if request.method == "POST":
+        category = request.POST['category']
+        name = request.POST['med_name']
+        image = request.POST['med_image']
+        price = request.POST['med_price']
+        description = request.POST['med_desc']
+        update = MedicineDetails(id=get_id, cat_id=category ,med_name=name,image=image,price=price,description=description)
+        update.save(update_fields=['cat_id','med_name','image','price','description'])
+    return render(request, "medicine-details.html",{'data':data})
+
+def delete_med_details(request):
+    get_id = request.GET['id']
+    data = MedicineDetails.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_medicine/")
+
+def edit_diseases(request):
+    get_id = request.GET['id']
+    if request.method == "POST":
+        name = request.POST['dis_name']
+        precaution = request.POST['dis_prec']
+        update = Diseases(id=get_id,dis_name=name,precaution=precaution)
+        update.save(update_fields=['dis_name','precaution'])
+    return render(request, "diseases.html")
+
+def delete_diseases(request):
+    get_id = request.GET['id']
+    data = Diseases.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_diseases/")
+
+def edit_symptoms(request):
+    get_id = request.GET['id']
+    data = Diseases.objects.all()
+    if request.method == "POST":
+        disease = request.POST['dis_name']
+        symptom = request.POST['symptom']
+        update = Symptoms(id=get_id, dis_id=disease, symptoms=symptom)
+        update.save(update_fields=['dis_id', 'symptoms'])
+    return render(request, "symptoms.html",{'data':data})
+
+def delete_symptoms(request):
+    get_id = request.GET['id']
+    data = Symptoms.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_symptoms/")
