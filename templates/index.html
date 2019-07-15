@@ -17,25 +17,25 @@ EasyMeds
 			</svg>
 		</div>
 		 <div class="log">
-			 <form method="post" >
+			 <form method="post" action="/login/" >
 				 {% csrf_token %}
 				 <div class="lab">
-					 <label>ENTER USERNAME:</label>
-					 <input type="text" name="username"  >
+					 <label class="l">USERNAME:</label>
+					 <input type="text" name="username" class="inlog" >
 				 </div >
 				 <div class="lab">
-					 <label>ENTER PASSWORD:</label>
-					 <input type="text" name="password" >
+					 <label class="l">PASSWORD:</label>
+					 <input type="text" name="password" class="inlog" >
 				 </div>
 				 <div class="lab">
-					 <input type="submit"  value="login">
+					 <input type="submit"  value="login" class="bda">
 				 </div>
 			 </form>
-			 <div>
-				 <a href="forget_password" class="for">Forgotten-password</a>
+			 <div class="for1">
+				 <a href="forget_password" class="for2">Forgotten-password?</a>
 			 </div>
-			 <div>
-				 <a href="/registration_page/" class="for">Sign-up</a>
+			 <div class="for1">
+				 <a href="/registration_page/" class="for2">Sign-up</a>
 			 </div>
 		 </div>
 

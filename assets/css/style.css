@@ -448,10 +448,8 @@ p.location span {
 	 border-color: #eee #eee #ddd;
 }
 a.navbar-brand img {
-    top: 9px;
-    left: 252px;
-    transform: rotate(17deg);
-	-webkit-transform: rotate(17deg);
+    top: -3px;
+    left: -90px;
 	-o-transform: rotate(17deg);
 	-moz-transform: rotate(17deg);
 	-ms-transform: rotate(17deg);
