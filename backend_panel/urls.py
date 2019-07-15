@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^symptoms/$',views.symptoms),
     url(r'^update_diseases/$',views.update_diseases),
     url(r'^update_symptoms/$',views.update_symptoms),
+    url(r'^edit_category/$',views.edit_med_category, name="edit_category")
 ]

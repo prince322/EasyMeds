@@ -33,24 +33,16 @@ def registration(request):
 
 def login(request):
     if request.method == "POST":
-        return HttpResponse("done")
         get_email= request.POST['username']
         get_password = request.POST['password']
-        try:
-            data = RoleDetails.objects.get(email=get_email)
-            user_password=data.password
-            role = data.role_id
-            if check_password(get_password, user_password):
-                request.session['authenticate'] = True
-                request.session['email'] = data.email
-                request.session['name'] = data.name
-                request.session['role'] = data.role
-                if role == 1:
-                    return redirect("/adminindex/")
-            else:
-                return HttpResponse("password not valid")
-        except:
-            return  HttpResponse("<h1>Email not valid</h1>")
+        data = RoleDetails.objects.get(email=get_email)
+        user_password=data.password
+        role = data.role_id
+        if check_password(get_password, user_password):
+            if role == 1:
+                return redirect("/adminindex/")
+            elif role == 2:
+                pass
     return render(request,"index.html")
 
 

@@ -1,10 +1,11 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms
+from miscFiles.autherize import authorization
 
 # Create your views here.
 def admin_index(request):
-    return render(request,"adminindex.html")
+        return render(request,"adminindex.html")
 
 
 def medicine_category(request):
@@ -64,3 +65,12 @@ def symptoms(request):
         f.symptoms = request.POST['symptom']
         f.save()
     return render(request,"symptoms.html",{'data':data})
+
+
+def edit_med_category(request):
+    get_id = request.GET['id']
+    if request.method == "POST":
+        name = request.POST['med_category']
+        update = MedicinesCategory(id=get_id, type=name)
+        update.save(update_fields=['type'])
+    return render(request, "medicine-type.html")

@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'easymeds_db',
         'PORT' : '3306',
         'USER' : 'root',
-        'PASSWORD' : 'payal123'
+        'PASSWORD' : '1701284'
     }
 }
 

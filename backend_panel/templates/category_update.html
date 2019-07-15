@@ -9,14 +9,14 @@ Update Medicine Category
 <div class="container">
     <div class="row">
         <div class="col-sm-12 h1 text-center">
-            <span>Add Medicine Category</span>
+            <span>Update Medicine Category</span>
         </div>
         <div class="col-sm-12">
             {% if data %}
             {% for name in data %}
             {{ name.type }}
-            <a href="?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="?id={{name.id}}" class="btn btn-warning">Edit</a>
+            <a href="//?id={{name.id}}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'backend_panel:edit_category' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
             {% endfor %}
             {% endif %}
         </div>
