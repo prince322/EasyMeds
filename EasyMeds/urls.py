@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'^verify_link/$',views.verify_link),
     url(r'^', include('backend_panel.urls')),
     url(r'^forgot_password/$', views.forgot_password),
+    url(r'^admin_update_profile/$', views.admin_update_profile),
+    url(r'^admin_update_password/$', views.admin_update_password),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

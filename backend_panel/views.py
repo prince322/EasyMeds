@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms
+from django.core.files.storage import FileSystemStorage
 from miscFiles.autherize import authorization
 
 # Create your views here.
@@ -26,10 +27,20 @@ def medicine_details(request):
     data = MedicinesCategory.objects.all()
     if request.method == "POST":
         form = MedicineDetailsForm(request.POST)
+        user_image = None
+        try:
+            if request.FILES["med_image"]:
+                my_file = request.FILES["med_image"]
+                fs = FileSystemStorage()
+                file_name = fs.save(my_file.name, my_file)
+                user_image = fs.url(file_name)
+                user_image = my_file.name
+        except:
+            pass
         f = form.save(commit=False)
         f.cat_id = request.POST['category']
         f.med_name = request.POST['med_name']
-        f.image = request.POST['med_image']
+        f.image = user_image
         f.price = request.POST['med_price']
         f.description = request.POST['med_desc']
         f.save()
@@ -129,3 +140,4 @@ def delete_symptoms(request):
     data = Symptoms.objects.get(id=get_id)
     data.delete()
     return redirect("/update_symptoms/")
+

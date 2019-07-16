@@ -12,13 +12,21 @@ Update Symptoms
             <span>Update Symptoms</span>
         </div>
         <div class="col-sm-12">
-            {% if data %}
-            {% for name in data %}
-            {{ name.symptoms }}
-            <a href="{% url 'backend_panel:delete_symptoms' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="{% url 'backend_panel:edit_symptoms' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
+            <table class="table table-striped">
+                <tr>
+                    <th>Symptom</th>
+                    <th>Modify</th>
+                </tr>
+                {% if data %}
+                {% for name in data %}
+                <tr>
+                    <td>{{ name.symptoms }}</td>
+                    <td><a href="{% url 'backend_panel:delete_symptoms' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'backend_panel:edit_symptoms' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
+                </tr>
             {% endfor %}
             {% endif %}
+            </table>
         </div>
     </div>
 </div>

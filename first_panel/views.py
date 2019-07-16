@@ -3,6 +3,7 @@ from first_panel.forms import RoleDetailsForm
 from first_panel.models import RoleDetails, UserRole
 from django.contrib.auth.hashers import make_password,check_password
 from miscFiles.genericFunction import generate_string,link_send,otp_generate,otp_send
+from django.core.files.storage import FileSystemStorage
 
 
 def index(request):
@@ -103,3 +104,44 @@ def forgot_password(request):
 def logout(request):
     request.session['email'] = ""
     return redirect("/")
+
+def admin_update_profile(request):
+    if request.method =='POST':
+        get_email = request.session['email']
+        user_image = None
+        try:
+            if request.FILES["image"]:
+                my_file = request.FILES["image"]
+                fs = FileSystemStorage()
+                file_name = fs.save(my_file.name, my_file)
+                user_image = fs.url(file_name)
+                user_image = my_file.name
+        except:
+            pass
+        get_name = request.POST['Ad_name']
+        get_mobile = request.POST['mobile']
+        get_address = request.POST['address']
+        update = RoleDetails(email=get_email, name=get_name, mobile=get_mobile, address=get_address, image=user_image)
+        update.save(update_fields=['name','mobile','address','image'])
+        return redirect("/adminindex/")
+    return render(request, "admin_update_profile.html")
+
+def admin_update_password(request):
+    if request.method == "POST":
+        get_email = request.session['email']
+        data = RoleDetails.objects.get(email=get_email)
+        user_password = request.POST['old_pass']
+        n_pass = request.POST['n_pass']
+        c_pass = request.POST['c_pass']
+        db_pass = data.password
+        if check_password(user_password,db_pass):
+            if n_pass==c_pass:
+                update = RoleDetails(email=get_email,password=make_password(c_pass))
+                update.save(update_fields=['password'])
+                return redirect("/adminindex/")
+            else:
+                return HttpResponse("please enter same password")
+        else:
+            return HttpResponse("please enter correct password")
+    return render(request,"admin_update_password.html")
+

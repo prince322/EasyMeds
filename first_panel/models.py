@@ -15,6 +15,7 @@ class RoleDetails(models.Model):
     email = models.CharField(max_length=225, primary_key=True)
     password = models.CharField(max_length=225, default="")
     mobile = models.CharField(max_length=225, default="")
+    image = models.CharField(max_length=225, default="", null=True)
     gender = models.CharField(max_length=225, default="",null=True)
     address = models.CharField(max_length=225, default="",null=True)
     otp = models.CharField(max_length=225, default="",null=True)

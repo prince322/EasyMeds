@@ -12,16 +12,27 @@ Update Medicine
             <span>Update Medicine</span>
         </div>
         <div class="col-sm-12">
-            {% if data %}
-            {% for name in data %}
-            {{ name.med_name}}
-            {{name.image}}
-            {{name.price}}
-            {{name.description}}
-            <a href="{% url 'backend_panel:delete_details' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="{% url 'backend_panel:med_details' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Modify</th>
+                </tr>
+                {% if data %}
+                {% for name in data %}
+                <tr>
+                    <td>{{ name.med_name}}</td>
+                    <td>{{name.image}}</td>
+                    <td>{{name.price}}</td>
+                    <td>{{name.description}}</td>
+                    <td><a href="{% url 'backend_panel:delete_details' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'backend_panel:med_details' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
+                </tr>
             {% endfor %}
             {% endif %}
+            </table>
         </div>
     </div>
 </div>
