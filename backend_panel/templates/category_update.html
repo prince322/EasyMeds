@@ -12,13 +12,20 @@ Update Medicine Category
             <span>Update Medicine Category</span>
         </div>
         <div class="col-sm-12">
-            {% if data %}
+            <table class="table table-bordered">
+                <tr>
+                    <td>Category</td>
+                </tr>
+                {% if data %}
             {% for name in data %}
-            {{ name.type }}
-            <a href="{% url 'backend_panel:delete_category' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
-            <a href="{% url 'backend_panel:edit_category' %}?id={{name.id}}" class="btn btn-warning">Edit</a>
+                <tr>
+                <td>{{ name.type }}</td>
+                    <td><a href="{% url 'backend_panel:delete_category' %}?id={{name.id}}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="{% url 'backend_panel:edit_category' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
+                </tr>
             {% endfor %}
             {% endif %}
+</table>
         </div>
     </div>
 </div>

@@ -24,11 +24,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('first_panel.urls')),
     url(r'^$', views.index),
+    url(r'^logout/$', views.logout),
     url(r'^login/$', views.login),
     url(r'^registration_page/$', views.registration),
     url(r'^update_password/$', views.update_password),
     url(r'^forget_password/$', views.forgot_password),
     url(r'^verify_link/$',views.verify_link),
     url(r'^', include('backend_panel.urls')),
-    #url(r'^forgot_password/$', views.forgot_password),
+    url(r'^forgot_password/$', views.forgot_password),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

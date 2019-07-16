@@ -39,6 +39,7 @@ def login(request):
         user_password=data.password
         role = data.role_id
         if check_password(get_password, user_password):
+            request.session['email'] = data.email
             if role == 1:
                 return redirect("/adminindex/")
             elif role == 2:
@@ -52,8 +53,6 @@ def verify_link(request):
     data = RoleDetails.objects.get(email=session_mail)
     db_verify = data.verify_link
     if get_link == db_verify:
-        update = RoleDetails(email=session_mail,active=1,verify_link="")
-        update.save(update_fields=['active','verify_link'])
         return redirect("/update_password/")
 
 
@@ -65,28 +64,42 @@ def update_password(request):
         data = RoleDetails.objects.get(email=session_mail)
         db_password = data.password
         if user_password == con_password:
-            update = RoleDetails(email=session_mail, password=make_password(con_password))
-            update.save(update_fields=['password'])
+            update = RoleDetails(email=session_mail, active=1, verify_link="", password=make_password(con_password))
+            update.save(update_fields=['active', 'verify_link', 'password'])
+            request.session['email'] = ""
             return redirect("/home/")
     return render(request, "updatePassword.html")
 
 
 def forgot_password(request):
     if request.method == "POST":
-        try:
-            get_email = request.POST["email"]
-            data=RoleDetails.objects.get(email=get_email)
-            db_email = data.email
-            db_active = data.active
-            if db_active == "1":
-                a=otp_generate()
-                update = RoleDetails(email=get_email, otp = make_password(a))
+        get_email = request.POST["text"]
+        get_password = request.POST["n_pass"]
+        get_cpass = request.POST['c_pass']
+        if get_email!="" and get_password == "" and get_cpass =="":
+            try:
+                data = RoleDetails.objects.get(email=get_email)
+                otp = otp_generate()
+                update = RoleDetails(email=get_email, otp=otp)
                 update.save(update_fields=['otp'])
-                otp_send(str(a),db_email)
-                request.session['email']=get_email
-                return redirect("/reset/")
-            else:
-                return render(request, "forgotten_password.html", {'con':True})
-        except:
+                otp_send(str(otp), get_email)
+                request.session['email'] = get_email
+                return render(request,"forgotten_password.html", {'otp': True})
+            except:
+                return HttpResponse("Email not valid")
+        elif get_email!="" and get_password != "" and get_cpass !="":
+            data = RoleDetails.objects.get(email=request.session['email'])
+            db_otp = data.otp
+            if get_email == db_otp:
+                if get_password == get_cpass:
+                    update = RoleDetails(email=request.session['email'], otp="", password=make_password(get_cpass))
+                    update.save(update_fields=['otp', 'password'])
+                    request.session['email'] = ""
+                    return redirect("/")
             return render(request,"forgotten_password.html",{'confirm':True})
     return render(request,"forgotten_password.html")
+
+
+def logout(request):
+    request.session['email'] = ""
+    return redirect("/")

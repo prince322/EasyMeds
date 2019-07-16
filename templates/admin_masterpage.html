@@ -31,7 +31,7 @@
              <!--header start here-->
 				<div class="header-main">
 					<div class="logo-w3-agile">
-								<h1><a href="index.html">Pooled</a></h1>
+								<h1><a href="/adminindex/">EasyMeds</a></h1>
 							</div>
 					<div class="w3layouts-left">
 							
@@ -192,7 +192,7 @@
 												<span class="prfil-img"><img src="/assets/admin_images/in4.jpg" alt=""> </span> 
 												<div class="user-name">
 
-													<span>Administrator</span>
+													<span>{{ request.session.name }}</span>
 												</div>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
@@ -200,9 +200,7 @@
 											</div>	
 										</a>
 										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-											<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											<li> <a href="/logout/"><i class="fa fa-sign-out"></i> Logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -224,28 +222,22 @@
 						<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
                            <div class="menu">
 									<ul id="menu" >
-										<li><a href="index.html"><i class="fa fa-tachometer"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
-										
-										
-										 <li id="menu-academico" ><a href="/medicine_category/"><i class="fa fa-envelope nav_icon"></i><span>inbox</span><div class="clearfix"></div></a></li>
+										<li><a href="/adminindex/"><i class="fa fa-tachometer"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
+
 									<li><a href="gallery.html"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Gallery</span><div class="clearfix"></div></a></li>
-									<li id="menu-academico" ><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Charts</span><div class="clearfix"></div></a></li>
 									 <li id="menu-academico" ><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span> Medicine Categories</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
 										   <li id="menu-academico-avaliacoes" ><a href="/medicine_category/">Add Category</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="/update_category/">Edit category</a></li>
 										  </ul>
 										</li>
-									<li id="menu-academico" ><a href="errorpage.html"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Error Page</span><div class="clearfix"></div></a></li>
 									  <li id="menu-academico" ><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i><span> Medicine Details</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
 										   <li id="menu-academico-avaliacoes" ><a href="/medicine_details/">Add Medicine</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="/update_medicine/">Edit Medicine</a></li>
 										  </ul>
 										</li>
-									 <li><a href="tabels.html"><i class="fa fa-table"></i>  <span>Tables</span><div class="clearfix"></div></a></li>
-									<li><a href="maps.html"><i class="fa fa-map-marker" aria-hidden="true"></i>  <span>Maps</span><div class="clearfix"></div></a></li>
-							        <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i>  <span>Prescription</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+										<li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i>  <span>Prescription</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										 <ul id="menu-academico-sub" >
 											<li id="menu-academico-boletim" ><a href="/diseases/">Add Prescription</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="/update_diseases/">Edit Prescription</a></li>
@@ -256,6 +248,12 @@
 									  <ul>
 										<li><a href="/symptoms/">Add Symptoms</a></li>
 										<li><a href="/update_symptoms/">Edit Symptoms</a></li>
+									</ul>
+									</li>
+										<li><a href="#"><i class="fa fa-check-square-o nav_icon"></i><span>Setting</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									  <ul>
+										<li><a href="/symptoms/">Update Profile</a></li>
+										<li><a href="/update_symptoms/">Update Password</a></li>
 									</ul>
 									</li>
 								  </ul>
