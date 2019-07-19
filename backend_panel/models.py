@@ -11,12 +11,12 @@ class MedicineDetails(models.Model):
     med_name = models.CharField(max_length=225,default="")
     image = models.CharField(max_length=225,default="",null=True)
     price = models.CharField(max_length=225,default="",null=True)
-    description = models.CharField(max_length=225,default="",null=True)
+    description = models.CharField(max_length=1000,default="",null=True)
 
 class Diseases(models.Model):
     id =  models.AutoField(primary_key=True)
     dis_name = models.CharField(max_length=225,default="")
-    precaution = models.CharField(max_length=225,default="",null=True)
+    precaution = models.CharField(max_length=1000,default="",null=True)
 
 class Symptoms(models.Model):
     id = models.AutoField(primary_key=True)
