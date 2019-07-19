@@ -1,5 +1,5 @@
 from django import forms
-from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms
+from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms, Relation
 
 
 class MedicinesCategoryForm(forms.ModelForm):
@@ -21,4 +21,10 @@ class SymptomsForm(forms.ModelForm):
     class Meta:
         model = Symptoms
         exclude = ["id", "symptoms", "dis"]
+
+class RelationForm(forms.ModelForm):
+    class Meta:
+        model = Relation
+        exclude = ["id", "dis","med"]
+
 

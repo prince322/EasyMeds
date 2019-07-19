@@ -1,12 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
-from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm
+from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm, RelationForm
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms
 from django.core.files.storage import FileSystemStorage
 from miscFiles.autherize import authorization
 
 # Create your views here.
-def admin_index(request):
-        return render(request,"adminindex.html")
+
 
 
 def medicine_category(request):
@@ -140,4 +139,23 @@ def delete_symptoms(request):
     data = Symptoms.objects.get(id=get_id)
     data.delete()
     return redirect("/update_symptoms/")
+
+
+def aleophetic_details(request):
+    data = MedicineDetails.objects.filter(cat_id=1)
+    return render(request, "alphetic.html", {'data':data})
+
+def med_dis_relation(request):
+    dis_data = Diseases.objects.all()
+    med_data = MedicineDetails.objects.all()
+    if request.method == "POST":
+        form = RelationForm(request.POST)
+        f = form.save(commit=False)
+        f.dis_id = request.POST['dis_name']
+        f.med_id = request.POST['med_name']
+        f.save()
+    return render(request,"med_dis_relation.html", {"dis_data":dis_data,"med_data":med_data})
+
+
+
 

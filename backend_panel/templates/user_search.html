@@ -1,0 +1,32 @@
+{% extends 'admin_masterpage.html' %}
+{% block title %}
+User_Details
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>User Details </span>
+        </div>
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>gender</th>
+                </tr>
+                {% if data %}
+                {% for name in data %}
+                <tr>
+                    <td> {{ name.name }}</td>
+                    <td>{{ name.email }}</td>
+                    <td>{{ name.gender }}</td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

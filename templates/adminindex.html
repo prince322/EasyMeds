@@ -29,8 +29,8 @@ Admin Index
 								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
-								<h3>Clients</h3>
-								<h4>15,520</h4>
+								<h3>Categories</h3>
+								<h4>4</h4>
 
 							</div>
 
@@ -39,10 +39,10 @@ Admin Index
 					<div class="col-md-3 four-grid">
 						<div class="four-w3ls">
 							<div class="icon">
-								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+								<i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
-								<h3>Projects</h3>
+								<h3>Medicines</h3>
 								<h4>12,430</h4>
 
 							</div>
@@ -55,7 +55,7 @@ Admin Index
 								<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
-								<h3>Old Projects</h3>
+								<h3>Diseases</h3>
 								<h4>14,430</h4>
 
 							</div>
@@ -65,42 +65,6 @@ Admin Index
 					<div class="clearfix"></div>
 				</div>
 <!--//four-grids here-->
-<!--agileinfo-grap-->
-<div class="agileinfo-grap">
-<div class="agileits-box">
-<header class="agileits-box-header clearfix">
-<h3>Statistics</h3>
-	<div class="toolbar">
-		<div class="pull-left">
-			<div class="btn-group">
-				<a href="#" class="btn btn-default btn-xs">Daily</a>
-				<a href="#" class="btn btn-default btn-xs active">Monthly</a>
-				<a href="#" class="btn btn-default btn-xs">Yearly</a>
-			</div>
-		</div>
-		<div class="pull-right">
-			<div class="btn-group">
-			  <a aria-expanded="false" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-				Export <i class="fa fa-angle-down"></i>
-			  </a>
-			  <ul class="dropdown-menu pull-right" role="menu">
-				<li><a href="#">Export as PDF</a></li>
-				<li><a href="#">Export as CSV</a></li>
-				<li><a href="#">Export as PNG</a></li>
-				<li class="divider"></li>
-				<li><a href="#">Separated link</a></li>
-			  </ul>
-			</div>
-			<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-cog"></i></a>
-		</div>
-	</div>
-</header>
-<div class="agileits-box-body clearfix">
-<div id="hero-area"></div>
-</div>
-</div>
-</div>
-	<!--//agileinfo-grap-->
 <!--photoday-section-->
 
 
@@ -113,11 +77,10 @@ Admin Index
 
                                         <div class="row m-0 md-bg-grey-100 p-l-20 p-r-20">
                                             <div class="col-md-6 col-sm-6 col-xs-6 w3layouts-aug">
-                                                <h3>August 2016</h3>
-                                                <p>REPORT</p>
+                                                <h3>USER</h3>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6 ">
-                                                <h2 class="text-right c-teal f-300 m-t-20">$21,235</h2>
+                                                <h2 class="text-right c-teal f-300 m-t-20">REPORT</h2>
                                             </div>
                                         </div>
 
@@ -125,38 +88,22 @@ Admin Index
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
+                                                        <th>Email</th>
                                                         <th>Name</th>
-                                                        <th>Amount</th>
+                                                        <th>Gender</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>2356</td>
-                                                        <td>dummy text </td>
-                                                        <td>6,200.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4589</td>
-                                                        <td>Lorem Ipsum</td>
-                                                        <td>6,500.00</td>
-                                                    </tr>
+                                                      {% if data %}
+                                                       {% for name in data %}
+                                                      <tr>
+                                                          <td>{{ name.email }}</td>
+                                                          <td>{{ name.name }}</td>
+                                                          <td>{{ name.gender }}</td>
+                                                      </tr>
+                                                      {% endfor %}
+                                                      {% endif %}
 
-                                                    <tr>
-                                                        <td>3269</td>
-                                                        <td>specimen book</td>
-                                                        <td>6,800.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5126</td>
-                                                        <td>Letraset sheets</td>
-                                                        <td>7,200.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>7425</td>
-                                                        <td>PageMaker</td>
-                                                        <td>5,900.00</td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>

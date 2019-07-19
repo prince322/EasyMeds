@@ -48,6 +48,7 @@ def login(request):
     return render(request,"index.html")
 
 
+
 def verify_link(request):
     get_link =request.GET['link']
     session_mail = request.session['email']
@@ -100,6 +101,9 @@ def forgot_password(request):
             return render(request,"forgotten_password.html",{'confirm':True})
     return render(request,"forgotten_password.html")
 
+def admin_index(request):
+    data = RoleDetails.objects.filter(role_id = 4)
+    return render(request, "adminindex.html",{'data':data})
 
 def logout(request):
     request.session['email'] = ""
@@ -144,4 +148,17 @@ def admin_update_password(request):
         else:
             return HttpResponse("please enter correct password")
     return render(request,"admin_update_password.html")
+
+def user_search(request):
+    if request.method == "POST":
+        get_email = request.POST['email']
+        try:
+            data = RoleDetails.objects.filter(email=get_email)
+            return render(request,"user_search.html",{'data':data})
+        except:
+            pass
+            return redirect("/adminindex/")
+
+
+
 

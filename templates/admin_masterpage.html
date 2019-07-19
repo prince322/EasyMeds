@@ -37,8 +37,9 @@
 							
 							<!--search-box-->
 								<div class="w3-search-box">
-									<form action="#" method="post">
-										<input type="text" placeholder="Search..." required="">	
+									<form action="/User_search/" method="post">
+										{% csrf_token %}
+										<input type="text" placeholder="Search..." name="email" required="">
 										<input type="submit" value="">					
 									</form>
 								</div><!--//end-search-box-->
@@ -231,7 +232,7 @@
 											<li id="menu-academico-avaliacoes" ><a href="/update_category/">Edit category</a></li>
 										  </ul>
 										</li>
-									  <li id="menu-academico" ><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i><span> Medicine Details</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									  <li id="menu-academico" ><a href="#"><i class="fa fa-check-square-o nav_icon" aria-hidden="true"></i><span> Medicine Details</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
 										   <li id="menu-academico-avaliacoes" ><a href="/medicine_details/">Add Medicine</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="/update_medicine/">Edit Medicine</a></li>
@@ -250,7 +251,7 @@
 										<li><a href="/update_symptoms/">Edit Symptoms</a></li>
 									</ul>
 									</li>
-										<li><a href="#"><i class="fa fa-check-square-o nav_icon"></i><span>Setting</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+										<li><a href="#"><i class="fa fa-cogs"></i><span>Setting</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 									  <ul>
 										<li><a href="/admin_update_profile/">Update Profile</a></li>
 										<li><a href="/admin_update_password/">Update Password</a></li>
