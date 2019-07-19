@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 CREATE TABLE IF NOT EXISTS `backend_panel_diseases` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dis_name` varchar(225) NOT NULL,
-  `precaution` varchar(225) DEFAULT NULL,
+  `precaution` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `backend_panel_medicinedetails` (
   `med_name` varchar(225) NOT NULL,
   `image` varchar(225) DEFAULT NULL,
   `price` varchar(225) DEFAULT NULL,
-  `description` varchar(225) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `backend_panel_medici_cat_id_01e84755_fk_backend_p` (`cat_id`),
