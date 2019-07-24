@@ -16,6 +16,30 @@ EasyMeds
 				<path id="arrow-right" d="M17.919 55.738c-0.858 0.867-0.858 2.266 0 3.133s2.243 0.867 3.101 0l25.056-25.302c0.858-0.867 0.858-2.269 0-3.133l-25.056-25.306c-0.858-0.867-2.243-0.867-3.101 0s-0.858 2.266 0 3.133l22.848 23.738-22.848 23.738z" />
 			</svg>
 		</div>
+		 <div class="pres">
+			 {% if data %}
+			 {% for i in data %}
+			 <div class="dis">
+				 <a href="{% url 'backend_panel:prescription_detail' %}?id={{i.id}}" class="same_cls">{{ i.dis_name }}</a>
+			 </div>
+			 {% endfor %}
+			 <div class="view-all">
+				 <a href="/prescription/" class="view">View all</a>
+			 </div>
+			 {% endif %}
+		 </div>
+
+		 <div class="med_cat">
+			 <div class="aha">
+				 <a href="/aleophetic_details/" class="hr">Allopathy</a>
+			 </div>
+			 <div class="aha">
+				 <a href="/Homopathy/" class="hr">Homopathy</a>
+			 </div>
+			 <div class="aha">
+				 <a href="/Ayurvedic/" class="hr">Ayurvedic</a>
+			 </div>
+		 </div>
 		 <div class="log">
 			 <form method="post" action="/login/" >
 				 {% csrf_token %}
@@ -145,15 +169,15 @@ EasyMeds
 					</div>
 
 				<div class="inner_tabs">
-				    <h2 class="tittle">Welcome to Medicinal</h2>
+				    <h2 class="tittle">Welcome to EASYMEDS</h2>
 					<p class="sub-para">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem  </p>
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Medical Surgery</a></li>
-							<li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours">Departments</a></li>
-							<li role="presentation"><a href="#tree" role="tab" id="tree-tab" data-toggle="tab" aria-controls="tree">Patient life</a></li>
-							<li role="presentation"><a href="#safari" role="tab" id="safari-tab" data-toggle="tab" aria-controls="safari">Baby Birth</a></li>
-							<li role="presentation"><a href="#trekking" role="tab" id="trekking-tab" data-toggle="tab" aria-controls="trekking">Lab Testing</a></li>
+							<li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Prescription</a></li>
+							<li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours"> Allopathy </a></li>
+							<li role="presentation"><a href="#tree" role="tab" id="tree-tab" data-toggle="tab" aria-controls="tree">Homopathy </a></li>
+							<li role="presentation"><a href="#safari" role="tab" id="safari-tab" data-toggle="tab" aria-controls="safari">Ayurvedic </a></li>
+							<li role="presentation"><a href="#trekking" role="tab" id="trekking-tab" data-toggle="tab" aria-controls="trekking">General Fitness</a></li>
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">

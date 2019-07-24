@@ -1,7 +1,7 @@
 {% extends 'admin_masterpage.html' %}
 
 {% block title %}
-Update Diseases
+Update Precautions
 {% endblock %}
 
 {% block content %}
@@ -9,20 +9,22 @@ Update Diseases
 <div class="container">
     <div class="row">
         <div class="col-sm-12 h1 text-center">
-            <span>Update Diseases </span>
+            <span>Update Precautions</span>
         </div>
         <div class="col-sm-12">
             <table class="table table-striped">
                 <tr>
-                    <th>Disease Name</th>
+                    <th>Disease Id</th>
+                    <th>Precaution</th>
                     <th>Modify</th>
                 </tr>
                 {% if data %}
                 {% for name in data %}
                 <tr>
-                    <td> {{ name.dis_name }}</td>
-                    <td><a href="{% url 'backend_panel:delete_diseases' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
-                    <a href="{% url 'backend_panel:edit_diseases' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
+                    <td>{{ name.dis_id }}</td>
+                    <td>{{ name.precautions }}</td>
+                    <td><a href="{% url 'backend_panel:delete_precautions' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'backend_panel:edit_precautions' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
                 </tr>
             {% endfor %}
             {% endif %}

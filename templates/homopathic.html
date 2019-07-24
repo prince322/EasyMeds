@@ -1,0 +1,67 @@
+{% extends 'masterPage.html' %}
+{% block title %}
+hompathic
+{% endblock %}
+{% block content %}
+
+<div class="piche">
+    <div class="col-sm-12 h1 text-center" style="background-color:rgba(225,40,50,1); height:80px; margin-top:0px; color:white; margin-bottom:30px;padding-top:18px;"><h1>Homopathic Medicine</h1></div>
+
+    <div class="container">
+        <div class="row">
+            {% for i in data %}
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail  desc">
+                    <img src="../media/{{ i.image }}" alt="/" height="150px" width="150px">
+                    <div class="caption">
+                        <h3 style="font-weight:bold;">{{ i.med_name|slice:"20" }}</h3>
+                        <p >{{ i.price }}</p>
+                        <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="{% url 'backend_panel:medicine_show' %}?id={{i.id}}" data-toggle="modal" data-target="#myModal" style="color:white; font-style:bold">Click here!</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="description bay">
+        {% if med_data %}
+
+
+    <div>
+           <img src="../media/{{ med_data.image }}" width="250px"  >
+            {{ med_data.med_name }}
+            {{ med_data.price }}
+            {{ med_data.description }}
+        </div>
+
+
+
+
+        {% endif %}
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Add Precautions
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Add Precautions</span>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Diseases</label>
+                    <select name="dis_name">
+                        <option value="0">Select</option>
+                        {% if data  %}
+                        {% for i in data %}
+                        <option value="{{i.id}}">{{i.dis_name}}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Precaution</label>
+                    <input type="text" class="form-control" name="precautions" placeholder="Precaution">
+                </div>
+                <div>
+                    <input type="submit" value="Add_Precaution" class="btn btn-primary btn-block">
+                </div>
+            </form>
+    </div>
+</div>
+
+{% endblock %}

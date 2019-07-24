@@ -1,0 +1,19 @@
+{% extends 'admin_masterpage.html' %}
+{% block title %}
+Gallery
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if data %}
+        {% for i in data %}
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <img src="/media/{{ i.image }}" alt="/" width="120px">
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

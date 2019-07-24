@@ -49,132 +49,38 @@
 							<div class="profile_details_left"><!--notifications of menu start -->
 								<ul class="nofitications-dropdown">
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
-										<ul class="dropdown-menu">
-											<li>
-												<div class="notification_header">
-													<h3>You have 3 new messages</h3>
-												</div>
-											</li>
-											<li><a href="#">
-											   <div class="user_img"><img src="/assets/admin_images/in11.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											</a></li>
-											<li class="odd"><a href="#">
-												<div class="user_img"><img src="/assets/admin_images/in10.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor </p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											  <div class="clearfix"></div>	
-											</a></li>
-											<li><a href="#">
-											   <div class="user_img"><img src="/assets/admin_images/in9.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											</a></li>
-											<li>
-												<div class="notification_bottom">
-													<a href="#">See all messages</a>
-												</div> 
-											</li>
-										</ul>
+										<a href="https://www.gmail.com/" class="dropdown-toggle"  aria-expanded="false"><i class="fa fa-envelope"></i></a>
 									</li>
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i></a>
 										<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
-													<h3>You have 3 new notification</h3>
+													<h4>Admins:</h4>
+													{% for i in admin_no %}
+													<label>{{ i.email }}</label>
+													{% endfor %}
 												</div>
-											</li>
-											<li><a href="#">
-												<div class="user_img"><img src="/assets/admin_images/in8.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											  <div class="clearfix"></div>	
-											 </a></li>
-											 <li class="odd"><a href="#">
-												<div class="user_img"><img src="/assets/admin_images/in6.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											 </a></li>
-											 <li><a href="#">
-												<div class="user_img"><img src="/assets/admin_images/in7.jpg" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											 </a></li>
-											 <li>
-												<div class="notification_bottom">
-													<a href="#">See all notifications</a>
-												</div> 
 											</li>
 										</ul>
 									</li>	
+
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i></a>
 										<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
-													<h3>You have 8 pending task</h3>
+													<h3>Active Admin</h3>
 												</div>
 											</li>
 											<li><a href="#">
+
 												<div class="task-info">
-													<span class="task-desc">Database update</span><span class="percentage">40%</span>
+													<span class="task-desc">Name:</span>
+
 													<div class="clearfix"></div>	
 												</div>
-												<div class="progress progress-striped active">
-													<div class="bar yellow" style="width:40%;"></div>
-												</div>
 											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-												   <div class="clearfix"></div>	
-												</div>
-												<div class="progress progress-striped active">
-													 <div class="bar green" style="width:90%;"></div>
-												</div>
-											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-													<div class="clearfix"></div>	
-												</div>
-											   <div class="progress progress-striped active">
-													 <div class="bar red" style="width: 33%;"></div>
-												</div>
-											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-												   <div class="clearfix"></div>	
-												</div>
-												<div class="progress progress-striped active">
-													 <div class="bar  blue" style="width: 80%;"></div>
-												</div>
-											</a></li>
-											<li>
-												<div class="notification_bottom">
-													<a href="#">See all pending tasks</a>
-												</div> 
-											</li>
 										</ul>
 									</li>	
 									<div class="clearfix"> </div>
@@ -225,7 +131,8 @@
 									<ul id="menu" >
 										<li><a href="/adminindex/"><i class="fa fa-tachometer"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
 
-									<li><a href="gallery.html"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Gallery</span><div class="clearfix"></div></a></li>
+									<li><a href="/gallery/"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Gallery</span><div class="clearfix"></div></a></li>
+										{% if request.session.role == 1 %}
 									 <li id="menu-academico" ><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span> Medicine Categories</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
 										   <li id="menu-academico-avaliacoes" ><a href="/medicine_category/">Add Category</a></li>
@@ -251,6 +158,20 @@
 										<li><a href="/update_symptoms/">Edit Symptoms</a></li>
 									</ul>
 									</li>
+									<li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i>  <span>Precautions</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+										 <ul id="menu-academico-sub" >
+											<li id="menu-academico-boletim" ><a href="/precautions/">Add Precautions</a></li>
+											<li id="menu-academico-avaliacoes" ><a href="/update_precautions/">Edit Precautions</a></li>
+
+										  </ul>
+									 </li>
+									<li><a href="#"><i class="fa fa-check-square-o nav_icon"></i><span>MedicineDiseaseRelation</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									  <ul>
+										<li><a href="/medicine_disease_relation/">Add </a></li>
+										<li><a href="/update_relation/">Edit </a></li>
+									</ul>
+									</li>
+										{% endif %}
 										<li><a href="#"><i class="fa fa-cogs"></i><span>Setting</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 									  <ul>
 										<li><a href="/admin_update_profile/">Update Profile</a></li>

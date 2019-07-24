@@ -16,12 +16,18 @@ class MedicineDetails(models.Model):
 class Diseases(models.Model):
     id =  models.AutoField(primary_key=True)
     dis_name = models.CharField(max_length=225,default="")
-    precaution = models.CharField(max_length=1000,default="",null=True)
+
 
 class Symptoms(models.Model):
     id = models.AutoField(primary_key=True)
     symptoms = models.CharField(max_length=225,default="",null=True)
     dis =  models.ForeignKey(Diseases, on_delete=models.CASCADE)
+
+class Precautions(models.Model):
+    id = models.AutoField(primary_key=True)
+    precautions = models.CharField(max_length=225, default="", null=True)
+    dis = models.ForeignKey(Diseases, on_delete=models.CASCADE)
+
 
 class Relation(models.Model):
     id = models.AutoField(primary_key=True)

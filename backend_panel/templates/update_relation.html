@@ -1,0 +1,50 @@
+{% extends 'admin_masterpage.html' %}
+
+{% block title %}
+Update Relation
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 h1 text-center">
+            <span>Update Diseases  And Medicine </span>
+        </div>
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>Disease</th>
+                    <th>Medicine</th>
+                    <th>Medicine_category</th>
+                    <th>Modify</th>
+                </tr>
+                {% if data %}
+                {% for name in data %}
+                {% if dis_data %}
+                {% for i in dis_data %}
+                {% if name.dis_id == i.id %}
+                {% if med_data %}
+                {% for j in med_data %}
+                {% if name.med_id == j.id %}
+                <tr>
+                    <td> {{ i.dis_name }}</td>
+                    <td> {{ j.med_name }}</td>
+                    <td> {{ j.cat_id }}</td>
+                    <td><a href="{% url 'backend_panel:delete_relation' %}?id={{name.id}}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'backend_panel:edit_relation' %}?id={{name.id}}" class="btn btn-warning">Edit</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

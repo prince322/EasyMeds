@@ -1,14 +1,24 @@
 from django.shortcuts import render, HttpResponse,redirect
 from first_panel.forms import RoleDetailsForm
 from first_panel.models import RoleDetails, UserRole
+from backend_panel.models import MedicineDetails,MedicinesCategory,Diseases
 from django.contrib.auth.hashers import make_password,check_password
 from miscFiles.genericFunction import generate_string,link_send,otp_generate,otp_send
 from django.core.files.storage import FileSystemStorage
+from miscFiles.autherize import authorization
 
 
 def index(request):
-    return render(request, "index.html")
+    data = Diseases.objects.all()
+    half_data = []
+    count = 0
+    for i in data:
+        if count == 5:
+            break
+        half_data.append(i)
+        count += 1
 
+    return render(request, "index.html", {'data':half_data})
 
 def registration(request):
     data = UserRole.objects.all()
@@ -41,12 +51,14 @@ def login(request):
         role = data.role_id
         if check_password(get_password, user_password):
             request.session['email'] = data.email
+            request.session['role'] = role
+            request.session['authenticate'] = True
+            request.session['name'] = data.name
             if role == 1:
                 return redirect("/adminindex/")
             elif role == 2:
                 pass
     return render(request,"index.html")
-
 
 
 def verify_link(request):
@@ -102,11 +114,27 @@ def forgot_password(request):
     return render(request,"forgotten_password.html")
 
 def admin_index(request):
-    data = RoleDetails.objects.filter(role_id = 4)
-    return render(request, "adminindex.html",{'data':data})
+    auth = authorization(request.session['authenticate'], request.session['role'], 1)
+    if auth == True:
+        get_email = request.session['email']
+        data = RoleDetails.objects.filter(role_id = 4)
+        admin_no = RoleDetails.objects.filter(role_id = 1)
+        med_data = MedicineDetails.objects.all()
+        cat_data = MedicinesCategory.objects.all()
+        des_data = Diseases.objects.all()
+        return render(request, "adminindex.html",{'data':data,'admin_no':admin_no,'med_data':med_data,'cat_data':cat_data,'des_data':des_data})
+    else:
+        aut, msg = auth
+        if msg == "wrongUser":
+            return HttpResponse("You are not a valid user")
+        elif msg == "notLogin":
+            return HttpResponse("Please login to access this page")
 
 def logout(request):
     request.session['email'] = ""
+    request.session['role'] = ""
+    request.session['authenticate'] = ""
+    request.session['name'] = ""
     return redirect("/")
 
 def admin_update_profile(request):
@@ -153,12 +181,7 @@ def user_search(request):
     if request.method == "POST":
         get_email = request.POST['email']
         try:
-            data = RoleDetails.objects.filter(email=get_email)
-            return render(request,"user_search.html",{'data':data})
+            data = RoleDetails.objects.get(email=get_email)
+            return render(request, "user_search.html", {'data':data})
         except:
-            pass
             return redirect("/adminindex/")
-
-
-
-

@@ -1,0 +1,20 @@
+{% extends 'masterPage.html' %}
+{% block title %}
+Prescription
+{% endblock %}
+{% block content %}
+<div class="bimari">
+<div class="col-sm-12 h1 text-center" style="background-color:rgba(225,40,50,1); height:80px; margin-top:0px; color:white; margin-bottom:30px;padding-top:18px;"><h1>Prescriptions</h1></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <ol>
+            {% for i in data %}
+                <li style=" font-size:21px; padding-top:20px; "><a style="color:white;"href="{% url 'backend_panel:prescription_detail' %}?id={{i.id}}">{{ i.dis_name }}</a></li>
+            {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

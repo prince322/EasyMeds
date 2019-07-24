@@ -1,0 +1,50 @@
+{% extends 'masterPage.html' %}
+{% block title %}
+dis
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            {% if dis_data %}
+                <h1>{{ dis_data.dis_name}}</h1>
+            {% endif %}
+            {% if sym_data %}
+               <h1>Symptom:</h1>
+                {% for i in sym_data %}
+                   {{ i.symptoms }}
+                   <p></p>
+                {% endfor %}
+            {% endif %}
+            {% if prec_data %}
+               <h1>Precaution:</h1>
+               {% for i in prec_data %}
+                 {{ i.precautions}}
+                  <p></p>
+                {% endfor %}
+            <h1>Medicines:</h1>
+            {% endif %}
+            {% if med_data %}
+            {% for i in med_data %}
+            {% if m_data %}
+            {% for j in m_data %}
+            {% if i.med_id == j.id %}
+            {% if c_data %}
+            {% for k in c_data %}
+            {% if j.cat_id == k.id %}
+            <span>{{ k.type }}</span><span>:{{ j.med_name}}</span>
+            <p></p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+         </div>
+
+    </div>
+</div>
+{% endblock %}

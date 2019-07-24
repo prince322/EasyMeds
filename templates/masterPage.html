@@ -33,6 +33,18 @@
     $(".log").toggle();
   });
 });
+   $(document).ready(function(){
+  $(".med_tog").click(function(){
+    $(".med_cat").toggle();
+  });
+});
+
+
+ $(document).ready(function(){
+  $(".presc").click(function(){
+    $(".pres").toggle();
+  });
+});
 </script>
 
 
@@ -87,8 +99,8 @@
 							<nav class="menu menu--francisco">
 									<ul class="nav navbar-nav menu__list">
 										<li class="menu__item menu__item--current"><a href="{% url 'first_panel:index' %}" class="menu__link"><span class="menu__helper">Home</span></a></li>
-                                        <li class="menu__item"><a href="/aleophetic_details/" class="menu__link"><span class="menu__helper">Medicine</span></a></li>
-										<li class="menu__item"><a href="#" class="menu__link"><span class="menu__helper">Prescription</span></a></li>
+                                        <li class="menu__item"><a href="#" class="menu__link med_tog"><span class="menu__helper">Medicine</span></a></li>
+										<li class="menu__item"><a href="#" class="menu__link presc"><span class="menu__helper">Prescription</span></a></li>
 										<li class="menu__item"><a href="#" class="menu__link toggle"><span class="menu__helper">Login</span></a></li>
 										<li class="menu__item"><a href="/registration_page/" class="menu__link"><span class="menu__helper">Register</span></a></li>
 
@@ -103,6 +115,8 @@
 			</div>
 	</div>
 <!--//header-top-->
+	{% block dataa %}
+	{% endblock %}
  {% block content %}
 	{% endblock %}
 	<!--/start-footer-section-->

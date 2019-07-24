@@ -957,7 +957,10 @@ img.lg-item-img {
     -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
+
+
+
+    }
 *, :active, :focus, :hover {
     outline: 0!important;
     -webkit-tap-highlight-color: transparent!important;

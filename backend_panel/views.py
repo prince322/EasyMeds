@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
-from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm, RelationForm
-from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms
+from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm, RelationForm, PrecautionsForm
+from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms,Relation, Precautions
 from django.core.files.storage import FileSystemStorage
 from miscFiles.autherize import authorization
 
@@ -57,12 +57,15 @@ def update_symptoms(request):
     data = Symptoms.objects.all()
     return render(request,"update_symptoms.html", {'data': data})
 
+def update_precautions(request):
+    data = Precautions.objects.all()
+    return render(request,"update_precautions.html", {'data': data})
+
 def diseases(request):
     if request.method == "POST":
         form = DiseasesForm(request.POST)
         f = form.save(commit=False)
         f.dis_name = request.POST['dis_name']
-        f.precaution = request.POST['dis_prec']
         f.save()
     return render(request,"diseases.html")
 
@@ -76,6 +79,16 @@ def symptoms(request):
         f.save()
     return render(request,"symptoms.html",{'data':data})
 
+def precautions(request):
+    data = Diseases.objects.all()
+    if request.method == "POST":
+        form = PrecautionsForm(request.POST)
+        f = form.save(commit=False)
+        f.dis_id = request.POST['dis_name']
+        f.precautions = request.POST['precautions']
+        f.save()
+    return render(request,"precautions.html",{'data':data})
+
 
 def edit_med_category(request):
     get_id = request.GET['id']
@@ -84,6 +97,7 @@ def edit_med_category(request):
         update = MedicinesCategory(id=get_id, type=name)
         update.save(update_fields=['type'])
     return render(request, "medicine-type.html")
+
 def del_med_category(request):
     get_id = request.GET['id']
     data = MedicinesCategory.objects.get(id=get_id)
@@ -94,9 +108,19 @@ def edit_med_details(request):
     get_id = request.GET['id']
     data = MedicinesCategory.objects.all()
     if request.method == "POST":
+        user_image = None
+        try:
+            if request.FILES["med_image"]:
+                my_file = request.FILES["med_image"]
+                fs = FileSystemStorage()
+                file_name = fs.save(my_file.name, my_file)
+                user_image = fs.url(file_name)
+                user_image = my_file.name
+        except:
+            pass
         category = request.POST['category']
         name = request.POST['med_name']
-        image = request.POST['med_image']
+        image = user_image
         price = request.POST['med_price']
         description = request.POST['med_desc']
         update = MedicineDetails(id=get_id, cat_id=category ,med_name=name,image=image,price=price,description=description)
@@ -113,9 +137,8 @@ def edit_diseases(request):
     get_id = request.GET['id']
     if request.method == "POST":
         name = request.POST['dis_name']
-        precaution = request.POST['dis_prec']
-        update = Diseases(id=get_id,dis_name=name,precaution=precaution)
-        update.save(update_fields=['dis_name','precaution'])
+        update = Diseases(id=get_id,dis_name=name)
+        update.save(update_fields=['dis_name'])
     return render(request, "diseases.html")
 
 def delete_diseases(request):
@@ -140,9 +163,27 @@ def delete_symptoms(request):
     data.delete()
     return redirect("/update_symptoms/")
 
+def edit_precautions(request):
+    get_id = request.GET['id']
+    data = Diseases.objects.all()
+    if request.method == "POST":
+        disease = request.POST['dis_name']
+        precautions = request.POST['precautions']
+        update = Precautions(id=get_id, dis_id=disease, precautions=precautions)
+        update.save(update_fields=['dis_id', 'precautions'])
+    return render(request, "precautions.html",{'data':data})
+
+def delete_precautions(request):
+    get_id = request.GET['id']
+    data = Precautions.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_precautions/")
+
+
+
 
 def aleophetic_details(request):
-    data = MedicineDetails.objects.filter(cat_id=1)
+    data = MedicineDetails.objects.filter(cat_id=13)
     return render(request, "alphetic.html", {'data':data})
 
 def med_dis_relation(request):
@@ -156,6 +197,62 @@ def med_dis_relation(request):
         f.save()
     return render(request,"med_dis_relation.html", {"dis_data":dis_data,"med_data":med_data})
 
+def update_relation(request):
+    data = Relation.objects.all()
+    dis_data = Diseases.objects.all()
+    med_data = MedicineDetails.objects.all()
+    return render(request, "update_relation.html",{'data':data,'dis_data':dis_data,'med_data':med_data})
+
+def delete_relation(request):
+    get_id = request.GET['id']
+    data = Relation.objects.get(id=get_id)
+    data.delete()
+    return redirect("/update_relation/")
+
+def edit_relation(request):
+    get_id = request.GET['id']
+    dis_data = Diseases.objects.all()
+    med_data = MedicineDetails.objects.all()
+    if request.method == "POST":
+        form = RelationForm(request.POST)
+        f = form.save(commit=False)
+        f.dis_id = request.POST['dis_name']
+        f.med_id = request.POST['med_name']
+        f.save()
+    return render(request, "med_dis_relation.html", {"dis_data": dis_data, "med_data": med_data})
+
+
+def homopathic(request):
+    data =  MedicineDetails.objects.filter(cat_id=15)
+    return render(request, "homopathic.html",{'data':data})
+
+def ayurvedic(request):
+    data =  MedicineDetails.objects.filter(cat_id=14)
+    return render(request, "Ayurvedic.html",{'data':data})
+
+def disease(request):
+    data =  Diseases.objects.all()
+    return render(request, "prescription.html",{'data':data})
+
+def prescription_detail(request):
+    get_id = request.GET['id']
+    dis_data = Diseases.objects.get(id=get_id)
+    prec_data = Precautions.objects.filter(dis_id = get_id)
+    sym_data = Symptoms.objects.filter(dis_id=get_id)
+    med_data = Relation.objects.filter(dis_id = get_id )
+    m_data = MedicineDetails.objects.all()
+    c_data = MedicinesCategory.objects.all()
+    return render(request,"prescription_detail.html",{'med_data':med_data,'c_data':c_data,'m_data':m_data,'dis_data':dis_data, 'sym_data':sym_data, 'prec_data':prec_data})
+
+def gallery(request):
+    data = MedicineDetails.objects.all()
+    return render(request,"gallery.html",{'data':data})
+
+
+def medicine_show(request):
+    get_id = request.GET['id']
+    med_data = MedicineDetails.objects.get(id=get_id)
+    return render(request,"homopathic.html",{"med_data":med_data})
 
 
 

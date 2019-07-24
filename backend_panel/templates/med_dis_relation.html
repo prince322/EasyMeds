@@ -19,7 +19,7 @@ Medicine Disease Relation
                      <select name="dis_name">
                          <option value="0">Select</option>
                          {% if dis_data %}
-                         {% for i in data %}
+                         {% for i in dis_data %}
                          <option value="{{i.id}}">{{i.dis_name}}</option>
                          {% endfor %}
                          {% endif %}
@@ -30,7 +30,7 @@ Medicine Disease Relation
                      <select name="med_name">
                          <option value="0">Select</option>
                          {% if med_data %}
-                         {% for i in data %}
+                         {% for i in med_data %}
                          <option value="{{i.id}}">{{i.med_name}}</option>
                          {% endfor %}
                          {% endif %}

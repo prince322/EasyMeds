@@ -16,13 +16,11 @@ User_Details
                     <th>gender</th>
                 </tr>
                 {% if data %}
-                {% for name in data %}
                 <tr>
-                    <td> {{ name.name }}</td>
-                    <td>{{ name.email }}</td>
-                    <td>{{ name.gender }}</td>
+                    <td> {{ data.name }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.gender }}</td>
                 </tr>
-            {% endfor %}
             {% endif %}
             </table>
         </div>
