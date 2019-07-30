@@ -35,6 +35,6 @@ urlpatterns = [
     url(r'^edit_relation/$', views.edit_relation, name="edit_relation"),
     url(r'^delete_relation/$',views.delete_relation, name="delete_relation"),
     url(r'^gallery/$',views.gallery),
-    url(r'^medicine_show/$',views.medicine_show,name="medicine_show")
+    url(r'^medicine_detail/$',views.medicine_detail, name="medicine_detail"),
 
 ]

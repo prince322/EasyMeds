@@ -248,11 +248,16 @@ def gallery(request):
     data = MedicineDetails.objects.all()
     return render(request,"gallery.html",{'data':data})
 
-
-def medicine_show(request):
+def medicine_detail(request):
     get_id = request.GET['id']
-    med_data = MedicineDetails.objects.get(id=get_id)
-    return render(request,"homopathic.html",{"med_data":med_data})
+    m_data = MedicineDetails.objects.get(id=get_id)
+    c_data = MedicinesCategory.objects.filter(id = m_data.cat_id)
+    des_data = Relation.objects.filter(med_id = get_id )
+    des_name = Diseases.objects.all()
+    sym_data = Symptoms.objects.all()
+    return render(request, "next_page.html",{'m_data': m_data,'c_data':c_data,'des_data':des_data,'des_name':des_name,'sym_data':sym_data,})
+
+
 
 
 

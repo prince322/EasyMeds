@@ -35,5 +35,6 @@ urlpatterns = [
     url(r'^forgot_password/$', views.forgot_password),
     url(r'^admin_update_profile/$', views.admin_update_profile),
     url(r'^admin_update_password/$', views.admin_update_password),
-    url(r'^User_search/$', views.user_search)
+    url(r'^User_search/$', views.user_search),
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

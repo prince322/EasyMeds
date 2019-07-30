@@ -1,0 +1,32 @@
+{% extends 'masterPage.html' %}
+{% block title %}
+Medicine_usage
+{% endblock %}
+{% block content %}
+<div class="piche" style="height:800px;">
+    {% if  m_data %}
+    <div class="col-sm-12 h1 text-center" style="background-color:rgba(225,40,50,1); height:80px; margin-top:0px; color:white; margin-bottom:30px;padding-top:18px;"><h1>{{ m_data.med_name }}</h1></div>
+    <div>
+    <img  src="../media/{{ m_data.image }}" alt="/" style="height:250px; width:250px; float:left; margin-left:100px; margin-right:100px;">
+    <p style="font-weight:bold; padding-top:220px;">{{ m_data.med_name }}</p>
+    <p >Price: {{ m_data.price }}</p>
+    <p style="">Desc:{{ m_data.description }}</p>
+    {% if c_data %}
+        <p> Category: {{ c_data.type }}</p>
+    {% endif %}
+    {% endif %}
+
+    </div>
+    {% if des_data %}
+        <p> Category: {{ des_data.dis_id }}</p>
+    {% endif %}
+    <p></p>
+    {% if sym_data %}
+    {% for i in sym_data %}
+    {% if des_data.dis_id == i.dis_id %}
+    <p> Symptomps: {{ i.symptoms }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-/*--A Design by W3layouts 
+/*--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -146,7 +146,7 @@ a i.dribble {
     width: 100%;
     height: 50px;
     border: none;
-    padding: 0;
+    padding:0px;
     border:none;
 	outline:none;
 }
@@ -1003,12 +1003,13 @@ p.sub-para {
     font-weight: 400;
     text-align: center;
 }
-#flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
+#flexiselDemo1, #flexiselDemo2, #flexiselDemo
 	display: none;
 }
 .nbs-flexisel-container {
 	position: relative;
 	max-width: 100%;
+
 }
 .nbs-flexisel-item a img {
 	width: 100%;
@@ -1034,7 +1035,7 @@ p.sub-para {
 	padding: 0px;
 	cursor: pointer;
 	position: relative;
-	width:380px! important;
+	width:280px! important;
 	margin: 0 8px;
 	box-shadow: 0px 0px 12px -1px rgba(215,215,215,0.44);
 	-webkit-box-shadow: 0px 0px 12px -1px rgba(215,215,215,0.44);
@@ -1065,15 +1066,23 @@ p.sub-para {
 	
 }
 /*** Navigation ***/
-.nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+.nbs-flexisel-nav-left{
     width: 45px;
     height: 55px;
-    position: absolute;
+    margin-left:730px;
     cursor: pointer;
-    z-index: 100;
     margin-top: 23.5em;
     border:1px solid rgba(255, 255, 255, 0.77);
 }
+ .nbs-flexisel-nav-right {
+    width: 45px;
+    height: 55px;
+    margin-left:630px;
+    cursor: pointer;
+    margin-top:23.5
+    border:1px solid rgba(255, 255, 255, 0.77);
+
+ }
 .nbs-flexisel-nav-left {
 	left:51%;
     background: url(../images/arrow.png) no-repeat -34px -2px;
@@ -2262,10 +2271,10 @@ float:left;
 		margin: 0;
 	}
 	
-	.nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+	.nbs-flexisel-nav-left,.nbs-flexisel-nav-right  {
 		width: 45px;
 		height:53px;
-		margin-top:20.5em;
+		margin-top:28.5em;
 		border: 1px solid rgba(255, 255, 255, 0.77);
 	}
 	.logo h1 a {

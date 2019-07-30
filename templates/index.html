@@ -16,52 +16,7 @@ EasyMeds
 				<path id="arrow-right" d="M17.919 55.738c-0.858 0.867-0.858 2.266 0 3.133s2.243 0.867 3.101 0l25.056-25.302c0.858-0.867 0.858-2.269 0-3.133l-25.056-25.306c-0.858-0.867-2.243-0.867-3.101 0s-0.858 2.266 0 3.133l22.848 23.738-22.848 23.738z" />
 			</svg>
 		</div>
-		 <div class="pres">
-			 {% if data %}
-			 {% for i in data %}
-			 <div class="dis">
-				 <a href="{% url 'backend_panel:prescription_detail' %}?id={{i.id}}" class="same_cls">{{ i.dis_name }}</a>
-			 </div>
-			 {% endfor %}
-			 <div class="view-all">
-				 <a href="/prescription/" class="view">View all</a>
-			 </div>
-			 {% endif %}
-		 </div>
 
-		 <div class="med_cat">
-			 <div class="aha">
-				 <a href="/aleophetic_details/" class="hr">Allopathy</a>
-			 </div>
-			 <div class="aha">
-				 <a href="/Homopathy/" class="hr">Homopathy</a>
-			 </div>
-			 <div class="aha">
-				 <a href="/Ayurvedic/" class="hr">Ayurvedic</a>
-			 </div>
-		 </div>
-		 <div class="log">
-			 <form method="post" action="/login/" >
-				 {% csrf_token %}
-				 <div class="lab">
-					 <label class="l">USERNAME:</label>
-					 <input type="text" name="username" class="inlog" >
-				 </div >
-				 <div class="lab">
-					 <label class="l">PASSWORD:</label>
-					 <input type="text" name="password" class="inlog" >
-				 </div>
-				 <div class="lab">
-					 <input type="submit"  value="login" class="bda">
-				 </div>
-			 </form>
-			 <div class="for1">
-				 <a href="forget_password" class="for2">Forgotten-password?</a>
-			 </div>
-			 <div class="for1">
-				 <a href="/registration_page/" class="for2">Sign-up</a>
-			 </div>
-		 </div>
 
 
 		<div class="sleekslider">
@@ -77,7 +32,7 @@ EasyMeds
 			<div class="slide bg-2">
 				<div class="slide-container">
 					<div class="slide-content">
-						<p>Lorem ipsum <span class="s-p">dolor</span> sit </p>
+						<p>Welcome to <span class="s-p">EASYMEDS</span>!</p>
 
 					</div>
 				</div>
@@ -85,7 +40,7 @@ EasyMeds
 			<div class="slide bg-3">
 				<div class="slide-container">
 					<div class="slide-content">
-						<p>Welcome to <span class="s-p">Medicinal</span>!</p>
+						<p>Welcome to <span class="s-p">EASYMEDS</span>!</p>
 
 					</div>
 				</div>
@@ -93,7 +48,7 @@ EasyMeds
 			<div class="slide bg-4">
 				<div class="slide-container">
 					<div class="slide-content">
-					<p>Lorem ipsum <span class="s-p">dolor</span> sit </p>
+					<p>Welcome to <span class="s-p">EASYMEDS</span>!</p>
 
 					</div>
 				</div>
@@ -101,7 +56,7 @@ EasyMeds
 			<div class="slide bg-5">
 				<div class="slide-container">
 					<div class="slide-content">
-					<p>Welcome to <span class="s-p">Medicinal</span>!</p>
+					<p>Welcome to <span class="s-p">EASYMEDS</span>!</p>
 
 					</div>
 				</div>
@@ -157,8 +112,61 @@ EasyMeds
         <!-- /Line Slider -->
 	</div>
     <!--footer-->
+<div style="margin-top:80px; text-align:center;"><h1 style="font-size:55px; font-weight:bold; color:#e45753;">Deals at steel</h1></div>
+<div class="container" style="margin-top:30px; background-color:rgba(211,211,211,0.7);  padding-top:20px;" >
+    <div class="row">
+        {% for j in a_data %}
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="../media/{{ j.image }}" alt="/" >
+                <div class="caption">
+                     <h3 style="font-weight:bold;">{{ j.med_name|slice:"20" }}</h3>
+                    <p>{{ j.price }}</p>
+                    <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-		<!-- Services -->
+<div class="container" style="margin-top:20px; background-color:rgba(211,211,211,0.7);  padding-top:20px;" >
+    <div class="row">
+        {% for k in h_data %}
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="../media/{{ k.image }}" alt="/" >
+                <div class="caption">
+                     <h3 style="font-weight:bold;">{{ k.med_name|slice:"20" }}</h3>
+                    <p>{{ k.price }}</p>
+                    <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="width:100%;">
+<div class="container" style="margin-top:20px; background-color:rgba(211,211,211,0.7);  padding-top:20px;" >
+    <div class="row">
+        {% for l in y_data %}
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="../media/{{ l.image }}" alt="/" >
+                <div class="caption">
+                     <h3 style="font-weight:bold;">{{ l.med_name|slice:"20" }}</h3>
+                    <p>{{ l.price }}</p>
+                    <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+<!-- Services -->
+
 		<div class="services" id="services">
 			<div class="container">
 
@@ -170,7 +178,7 @@ EasyMeds
 
 				<div class="inner_tabs">
 				    <h2 class="tittle">Welcome to EASYMEDS</h2>
-					<p class="sub-para">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem  </p>
+					<p class="sub-para">Easymeds is a website that is made to help the people for getting knowledge about the medicine that they need to take during any type of diseases. It will help them to detect the disease with reading the symptoms and make them know that which medicine that need to take at that time.   </p>
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Prescription</a></li>
@@ -182,46 +190,46 @@ EasyMeds
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
 								<div class="col-md-5 col-sm-5 tab-image">
-									<img src="/assets/images/4.jpg" alt="Medicinal">
+									<img src="/media/about1.jpg" alt="Medicinal">
 								</div>
 								<div class="col-md-7 col-sm-7 tab-info">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+									<p>Easymeds contains of a section called "Prescriptions". This section contains the name of the diseases with its symptoms and the precautions. By following the symptoms one can detect his/her diseases and can select the medicine of any category given below. It helps them those are not aware about the medicines that they need to take in that disease.</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
 								<div class="col-md-5 col-sm-5 tab-image">
-									<img src="/assets/images/8.jpg" alt="Medicinal">
+									<img src="/assets/images/about2.jpg" alt="Medicinal">
 								</div>
 								<div class="col-md-7 col-sm-7 tab-info">
-									<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.</p>
+									<p>There is a section in Easymeds that provides medicines of allopathic category.If someone is in a manner to take only allopathic medicine then this section can help him /her in finding out the appropriate medicine.These medicines help in curing very fast by creating the antibodies which are opposite to that of the disease.</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="tree" aria-labelledby="tree-tab">
 								<div class="col-md-5 col-sm-5 tab-image">
-									<img src="/assets/images/5.jpg" alt="Medicinal">
+									<img src="/assets/images/about3.jpg" style="height:263px; width:455px;" alt="Medicinal">
 								</div>
 								<div class="col-md-7 col-sm-7 tab-info">
-									<p> This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact form, accompanied by English versions from the 1914 translation by H. Rackham. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+									<p> Easymeds also contains a section of the homopathic medicines. If any anybody is in a manner to take homopathy medicine then this section is helpful to him in finding so. Homopathic medicine does not makes any bad impacts on your body as like the other medicines. It made your body able to fight with the diseases.It do not have any side affect on the body. </p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
 								<div class="col-md-5 col-sm-5 tab-image">
-									<img src="/assets/images/6.jpg" alt="Medicinal">
+									<img src="/assets/images/about4.jpg" style="height:263px; width:455px;" alt="Medicinal">
 								</div>
 								<div class="col-md-7 col-sm-7 tab-info">
-									<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose.</p>
+									<p>Easymeds also contains a section of the Ayurvedic medicines. If any anybody is in a manner to take Ayurvedic medicine then this section is helpful to him in finding so. Ayurvedic medicines is one of the ancient medicine that human is using to get out of any disease. It is the medicine that is only made from the natural remedies of trees and plants. it will help you to know you about the medicines that are used in your daily life and can help you to remain healthy and fit.     </p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="trekking" aria-labelledby="trekking-tab">
 								<div class="col-md-5 col-sm-5 tab-image">
-									<img src="/assets/images/7.jpg" alt="Medicinal">
+									<img src="/assets/images/about5.jpg"  style="height:263px; width:455px;" alt="Medicinal">
 								</div>
 								<div class="col-md-7 col-sm-7 tab-info">
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures.</p>
+									<p>There is a section in Easymeds that is "Personal Care'.This section contain all that things that are not medicines but can help us to remain fit and healthy.This section may contain of hand-wash,Protein related products,soaps,body lotions etc. </p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -234,134 +242,59 @@ EasyMeds
 		</div>
 		<!-- //Services -->
 		<!--medicinal-->
-			<div class="medicinal-w3">
-				<div class="container">
-				    <div class="sub-hd">
-						<h3 class="tittle two">OUR <span>SERVICES</span></h3>
-					</div>
-					<div class="medicinal-w3-grids one">
-						<div class="col-md-6 medicinal-w3-grid">
-							<div class="col-md-8 medicinal-w3-left">
-								<h4>LOREM IPSUM DOLOR</h4>
-								<p>sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. </p>
-							</div>
-							<div class="col-md-4 medicinal-w3-right">
-								<div class="hi-icon-wrap hi-icon-effect-7 hi-icon-effect-7b">
-									<a href="#" class="hi-icon icon1"></a>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="col-md-6 medicinal-w3-grid">
-							<div class="col-md-4 medicinal-w3-right">
-								<div class="hi-icon-wrap hi-icon-effect-7 hi-icon-effect-7b">
-									<a href="#" class="hi-icon icon2"></a>
-								</div>
-							</div>
-							<div class="col-md-8 medicinal-w3-left1">
-								<h4>LOREM IPSUM DOLOR</h4>
-								<p>sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. </p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="medicinal-w3-grids">
-						<div class="col-md-6 medicinal-w3-grid">
-							<div class="col-md-8 medicinal-w3-left">
-								<h4>LOREM IPSUM DOLOR</h4>
-								<p>sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. </p>
-							</div>
-							<div class="col-md-4 medicinal-w3-right">
-								<div class="hi-icon-wrap hi-icon-effect-7 hi-icon-effect-7b">
-									<a href="#" class="hi-icon icon3"></a>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="col-md-6 medicinal-w3-grid">
-							<div class="col-md-4 medicinal-w3-right">
-								<div class="hi-icon-wrap hi-icon-effect-7 hi-icon-effect-7b">
-									<a href="#" class="hi-icon icon4"></a>
-								</div>
-							</div>
-							<div class="col-md-8 medicinal-w3-left1">
-								<h4>LOREM IPSUM DOLOR</h4>
-								<p>sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. </p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-			<!--medicinal-->
-			<div class="grid_2" id="tender">
-   </div>
+
 		<!--//team-->
-   <!--/reviews-->
-	<div id="review" class="testimonials-review">
-		<div class="container">
+<div class="review-slider" >
 		<div class="sub-hd">
-						<h3 class="tittle lost">WHAT PATIENTS ARE SAYING <span>ABOUT US</span></h3>
+						<h3 class="tittle">OUR LATEST <span>NEWS</span></h3>
 					</div>
-				<div class="testimonials">
-				  <div class="monials">
-				      <!--//screen-gallery-->
-						<div class="sreen-gallery-cursual">
-							 <!-- required-js-files-->
-							<link href="/assets/css/owl.carousel.css" rel="stylesheet">
-							    <script src="/assets/js/owl.carousel.js"></script>
-							        <script>
-							    $(document).ready(function() {
-							      $("#owl-demo").owlCarousel({
-							        items : 1,
-							        lazyLoad : true,
-							        autoPlay : true,
-							        navigation : false,
-							        navigationText :  false,
-							        pagination : true,
-							      });
-							    });
-							    </script>
-								 <!--//required-js-files-->
-						       <div id="owl-demo" class="owl-carousel">
-					                   <div class="item-owl">
+	                     <ul id="flexiselDemo1" >
+							 {% for j in a_data %}
+								<li>
+									<div class="thumbnail" style="margin-bottom:0px; " >
+										<img src="../media/{{ j.image }}" alt="/" >
+										<div class="caption">
+											<h3 style="font-weight:bold;">{{ j.med_name|slice:"20" }}</h3>
+											<p>{{ j.price }}</p>
+											<div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-top:7px; margin-left:14px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+										</div>
+									</div>
+								</li>
+							  {% endfor %}
+						 </ul>
+</div>
 
-                                            <p class="speech">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
-                                            <div class="client-info">
-                                                <img src="/assets/images/t1.jpg" alt=" " />
+   <!--/reviews-->
 
-                                                <h4>John Allen</h4>
-                                                <span>Lorem ipsum dolor</span>
-                                            </div>
-                                        </div><!-- /.item -->
-					                     <div class="item-owl">
 
-                                            <p class="speech">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
-                                            <div class="client-info">
-                                                <img src="/assets/images/t2.jpg" alt=" " />
 
-                                                <h4>John Doe</h4>
-                                                <span>Lorem ipsum dolor</span>
-                                            </div>
-                                        </div><!-- /.item -->
-					                      <div class="item-owl">
-										  <p class="speech">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
-                                            <div class="client-info">
-                                                <img src="/assets/images/t3.jpg" alt=" " />
-
-                                                <h4>John Leo</h4>
-                                                <span>Lorem ipsum dolor</span>
-                                            </div>
-                                        </div><!-- /.item -->
-				              </div>
-						<!--//screen-gallery-->
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<!--//reviews-->
+							<script type="text/javascript">
+						$(window).load(function() {
+						  $("#flexiselDemo1").flexisel({
+								visibleItems:4,
+								animationSpeed: 1000,
+								autoPlay: true,
+								autoPlaySpeed: 3000,
+								pauseOnHover: false,
+								enableResponsiveBreakpoints: true,
+								responsiveBreakpoints: {
+									portrait: {
+										changePoint:480,
+										visibleItems: 2
+									},
+									landscape: {
+										changePoint:640,
+										visibleItems: 3
+									},
+									tablet: {
+										changePoint:800,
+										visibleItems: 4
+									}
+								}
+							});
+							});
+						</script>
+						<script type="text/javascript" src="/assets/js/jquery.flexisel.js"></script>
+         </div>
+   <!--//news-->
 {% endblock %}

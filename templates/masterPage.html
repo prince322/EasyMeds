@@ -57,19 +57,10 @@
 			  <div class="header-search">
 			   <form action="#" method="post">
 				<div class="search">
-					<input type="search" value="Search" name="search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+					<input type="search" value="Search"  name="search" style="margin-left:100px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
 				</div>
-				<div class="section_room">
-					<select id="country" onchange="change_country(this.value)" class="frm-field required">
-						<option value="null">All Tests</option>
-						<option value="null">Blood Test</option>     
-						<option value="AX">Urine Test </option>
-						<option value="AX">Blood Volume Test</option>
-						<option value="AX">Normal Test</option>
-						<option value="AX">Body Scanning</option>
-					</select>
-				</div>
-				<div class="sear-sub">
+
+				<div class="sear-sub" style="margin-right:100px;">
 					<input type="submit" value=" ">
 				</div>
 				<div class="clearfix"></div>
@@ -114,89 +105,61 @@
 			   <div class="clearfix"></div>
 			</div>
 	</div>
+
+
+	<div class="pres">
+			 {% if data %}
+			 {% for i in data %}
+			 <div class="dis">
+				 <a href="{% url 'backend_panel:prescription_detail' %}?id={{i.id}}" class="same_cls">{{ i.dis_name }}</a>
+			 </div>
+			 {% endfor %}
+			 <div class="view-all">
+				 <a href="/prescription/" class="view">View all</a>
+			 </div>
+			 {% endif %}
+	</div>
+
+	<div class="med_cat">
+			 <div class="aha">
+				 <a href="/aleophetic_details/" class="hr">Allopathy</a>
+			 </div>
+			 <div class="aha">
+				 <a href="/Homopathy/" class="hr">Homopathy</a>
+			 </div>
+			 <div class="aha">
+				 <a href="/Ayurvedic/" class="hr">Ayurvedic</a>
+			 </div>
+	</div>
+	<div class="log">
+			 <form method="post" action="/login/" >
+				 {% csrf_token %}
+				 <div class="lab">
+					 <label class="l">USERNAME:</label>
+					 <input type="text" name="username" class="inlog" >
+				 </div >
+				 <div class="lab">
+					 <label class="l">PASSWORD:</label>
+					 <input type="text" name="password" class="inlog" >
+				 </div>
+				 <div class="lab">
+					 <input type="submit"  value="login" class="bda">
+				 </div>
+			 </form>
+			 <div class="for1">
+				 <a href="forget_password" class="for2">Forgotten-password?</a>
+			 </div>
+			 <div class="for1">
+				 <a href="/registration_page/" class="for2">Sign-up</a>
+			 </div>
+	</div>
 <!--//header-top-->
 	{% block dataa %}
 	{% endblock %}
  {% block content %}
 	{% endblock %}
 	<!--/start-footer-section-->
-			<div class="footer-section">
-				<div class="container">
-					<div class="footer-grids wow bounceIn animated" data-wow-delay="0.4s">
-						<div class="col-md-3 footer-grid">
-						<h4>About <span>Medicinal</span></h4>
-						<div class="border2"></div>
-						  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
-						  <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
-						</div>
-						<div class="col-md-3 footer-grid tags">
-								<h4>The <span>Tags</span></h4>
-								<div class="border2"></div>
-							<ul class="tag">
-								<li><a href="#">Awesome</a></li>
-								<li><a href="#">Strategy</a></li>
-								<li><a href="#">Photography</a></li>
-								<li><a href="#">Development</a></li>
-								<li><a href="#">Css</a></li>
-								<li><a href="#">photoshop</a></li>
-								<li><a href="#">Html</a></li>
-								<li><a href="#">Awesome</a></li>
-								<li><a href="#">Strategy</a></li>
-								<li><a href="#">Photoshop</a></li>
-								<li><a href="#">Html</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3 footer-grid tweet">
-								<h4>Latest <span>Tweets</span></h4>
-								<div class="border2"></div>
-								<div class="icon-3-square">
-										<a href="#"><i class="square-3"></i></a>
-									</div>
-							<div class="icon-text">
-								<p>I like this awesome freebie. Check it out By <a href="#"> Admin </a></p>
-								<h5>15 mins ago</h5>
-							</div>
-								<div class="clearfix"></div>
-								<div class="icon-3-square">
-										<a href="#"><i class="square-3"></i></a>
-								</div>
-								<div class="icon-text">
-								    <p>I like this awesome freebie. Check it out  By <a href="#"> Admin </a> </p>
-									<h5>15 mins ago</h5>
-								</div>
-								<div class="clearfix"></div>
-						</div>
-						<div class="col-md-3 footer-grid flickr">
-								<h4>Flickr <span>Feed </span></h4>
-								<div class="border2"></div>
-								<div class="flickr-grids">
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t1.jpg" alt=" " title="CEO" /></a>
-										</div>
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t2.jpg" alt=" " title="GM" /></a>
-										</div>
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t3.jpg" alt=" " title="CEO" /></a>
-										</div>
-										<div class="clearfix"> </div>
-										
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t2.jpg" alt=" " title="GM" /></a>
-										</div>
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t3.jpg" alt=" " title="CEO" /></a>
-										</div>
-										<div class="flickr-grid">
-											<a href="#"><img src="/assets/images/t1.jpg" alt=" " title="GM" /></a>
-										</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-			</div>
-		</div>
+
 	<!--//end-footer-section-->
 	<!--//footer-->
 	<div class="footer-bottom">

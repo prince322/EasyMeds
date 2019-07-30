@@ -3,38 +3,53 @@
 dis
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="piche">
+    <div class="col-sm-12 h1 text-center" style="background-color:rgba(225,40,50,1); height:80px; margin-top:0px; color:white; margin-bottom:30px;padding-top:18px;"><h1>Prescriptions</h1></div>
+<div class="container" style="padding-left:160px;">
     <div class="row">
         <div class="col-sm-6">
             {% if dis_data %}
-                <h1>{{ dis_data.dis_name}}</h1>
+                <h1 style="font-weight:bold; font-size:50px; padding-bottom:70px; color:white;">{{ dis_data.dis_name}}</h1>
             {% endif %}
             {% if sym_data %}
-               <h1>Symptom:</h1>
+               <h1 style="font-weight:bold; font-size:24px; padding-bottom:8px;">Symptom:</h1>
                 {% for i in sym_data %}
-                   {{ i.symptoms }}
-                   <p></p>
+                 <h3 style= " text-transform:lowercase; color:white; font-family:'Arial'; line-height: 1.9em;">{{ i.symptoms }}</h3>
+                   <p ></p>
                 {% endfor %}
             {% endif %}
             {% if prec_data %}
-               <h1>Precaution:</h1>
+
+               <h1 style="font-weight:bold; font-size:24px; padding-bottom:8px; padding-top:23px; ">Precaution:</h1>
                {% for i in prec_data %}
-                 {{ i.precautions}}
+            <h3 style="font-family:'Arial'; text-transform:lowercase; color:white; line-height:1.9em; ">{{ i.precautions}}</h3>
                   <p></p>
                 {% endfor %}
-            <h1>Medicines:</h1>
+            <h1 style="font-weight:bold; font-size:24px; padding-bottom:34px; padding-left:385px; padding-top:80px;">Medicines:</h1>
             {% endif %}
-            {% if med_data %}
-            {% for i in med_data %}
-            {% if m_data %}
-            {% for j in m_data %}
-            {% if i.med_id == j.id %}
-            {% if c_data %}
-            {% for k in c_data %}
-            {% if j.cat_id == k.id %}
-            <span>{{ k.type }}</span><span>:{{ j.med_name}}</span>
-            <p></p>
-            {% endif %}
+
+    <div class="container" >
+        <div class="row" >
+             {% if med_data %}
+                {% for i in med_data %}
+                {% if m_data %}
+                {% for j in m_data %}
+                {% if i.med_id == j.id %}
+                {% if c_data %}
+                {% for k in c_data %}
+                {% if j.cat_id == k.id %}
+            <div class="col-sm-6 col-md-3">
+                <span style="font-weight:bold; padding-left:85px">{{ k.type }}</span>
+                <div class="thumbnail  desc" >
+                    <img src="../media/{{ j.image }}" alt="/" height="150px" width="150px">
+                    <div class="caption">
+                        <h3 style="font-weight:bold;">{{ j.med_name|slice:"20" }}</h3>
+                        <p >{{ j.price }}</p>
+                        <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="#" data-toggle="modal" data-target="#myModal" style="color:white; font-style:bold">Click here!</a></div>
+                    </div>
+                </div>
+            </div>
+               {% endif %}
             {% endfor %}
             {% endif %}
             {% endif %}
@@ -42,6 +57,10 @@ dis
             {% endif %}
             {% endfor %}
             {% endif %}
+
+        </div>
+    </div>
+
 
          </div>
 

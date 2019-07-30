@@ -10,15 +10,38 @@ from miscFiles.autherize import authorization
 
 def index(request):
     data = Diseases.objects.all()
+    a_data = MedicineDetails.objects.filter(cat_id=13)
+    h_data = MedicineDetails.objects.filter(cat_id=15)
+    y_data = MedicineDetails.objects.filter(cat_id=14)
     half_data = []
     count = 0
+    allopath = []
+    dount = 0
+    homopath = []
+    eount = 0
+    ayurved = []
+    fount = 0
     for i in data:
-        if count == 5:
+        if count == 9:
             break
         half_data.append(i)
         count += 1
-
-    return render(request, "index.html", {'data':half_data})
+    for j in a_data:
+        if dount == 4:
+            break
+        allopath.append(j)
+        dount +=1
+    for k in h_data:
+        if eount == 4:
+            break
+        homopath.append(k)
+        eount +=1
+    for l in y_data:
+        if fount == 4:
+            break
+        ayurved.append(l)
+        fount +=1
+    return render(request, "index.html", {'data':half_data,'a_data':allopath,'h_data':homopath,'y_data':ayurved})
 
 def registration(request):
     data = UserRole.objects.all()
