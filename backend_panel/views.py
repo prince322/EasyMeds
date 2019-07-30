@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm, RelationForm, PrecautionsForm
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms,Relation, Precautions
 from django.core.files.storage import FileSystemStorage
-from miscFiles.autherize import authorization
+
 
 # Create your views here.
 
@@ -180,12 +180,6 @@ def delete_precautions(request):
     return redirect("/update_precautions/")
 
 
-
-
-def aleophetic_details(request):
-    data = MedicineDetails.objects.filter(cat_id=13)
-    return render(request, "alphetic.html", {'data':data})
-
 def med_dis_relation(request):
     dis_data = Diseases.objects.all()
     med_data = MedicineDetails.objects.all()
@@ -221,17 +215,8 @@ def edit_relation(request):
         f.save()
     return render(request, "med_dis_relation.html", {"dis_data": dis_data, "med_data": med_data})
 
-
-def homopathic(request):
-    data =  MedicineDetails.objects.filter(cat_id=15)
-    return render(request, "homopathic.html",{'data':data})
-
-def ayurvedic(request):
-    data =  MedicineDetails.objects.filter(cat_id=14)
-    return render(request, "Ayurvedic.html",{'data':data})
-
 def disease(request):
-    data =  Diseases.objects.all()
+    data = Diseases.objects.all()
     return render(request, "prescription.html",{'data':data})
 
 def prescription_detail(request):
@@ -247,15 +232,6 @@ def prescription_detail(request):
 def gallery(request):
     data = MedicineDetails.objects.all()
     return render(request,"gallery.html",{'data':data})
-
-def medicine_detail(request):
-    get_id = request.GET['id']
-    m_data = MedicineDetails.objects.get(id=get_id)
-    c_data = MedicinesCategory.objects.filter(id = m_data.cat_id)
-    des_data = Relation.objects.filter(med_id = get_id )
-    des_name = Diseases.objects.all()
-    sym_data = Symptoms.objects.all()
-    return render(request, "next_page.html",{'m_data': m_data,'c_data':c_data,'des_data':des_data,'des_name':des_name,'sym_data':sym_data,})
 
 
 

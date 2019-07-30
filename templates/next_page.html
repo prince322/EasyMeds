@@ -12,21 +12,9 @@ Medicine_usage
     <p >Price: {{ m_data.price }}</p>
     <p style="">Desc:{{ m_data.description }}</p>
     {% if c_data %}
-        <p> Category: {{ c_data.type }}</p>
+        <label> Category:</label><span>{{ c_data.type }}</span>
     {% endif %}
-    {% endif %}
-
     </div>
-    {% if des_data %}
-        <p> Category: {{ des_data.dis_id }}</p>
-    {% endif %}
-    <p></p>
-    {% if sym_data %}
-    {% for i in sym_data %}
-    {% if des_data.dis_id == i.dis_id %}
-    <p> Symptomps: {{ i.symptoms }}</p>
-    {% endif %}
-    {% endfor %}
     {% endif %}
 </div>
 {% endblock %}

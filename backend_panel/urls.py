@@ -25,16 +25,13 @@ urlpatterns = [
     url(r'^delete_symptoms/$',views.delete_symptoms, name="delete_symptoms"),
     url(r'^edit_precautions/$', views.edit_precautions, name="edit_precautions"),
     url(r'^delete_precautions/$', views.delete_precautions, name="delete_precautions"),
-    url(r'^aleophetic_details/$', views.aleophetic_details),
     url(r'^medicine_disease_relation/$', views.med_dis_relation),
-    url(r'^Homopathy/$', views.homopathic),
-    url(r'^Ayurvedic/$', views.ayurvedic),
     url(r'^prescription/$', views.disease),
     url(r'^prescription_detail/$', views.prescription_detail, name="prescription_detail" ),
     url(r'^update_relation/$', views.update_relation),
     url(r'^edit_relation/$', views.edit_relation, name="edit_relation"),
     url(r'^delete_relation/$',views.delete_relation, name="delete_relation"),
     url(r'^gallery/$',views.gallery),
-    url(r'^medicine_detail/$',views.medicine_detail, name="medicine_detail"),
+
 
 ]

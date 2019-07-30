@@ -55,7 +55,8 @@
 <div class="main-header" id="house">
 			<div class="header-middle">
 			  <div class="header-search">
-			   <form action="#" method="post">
+			   <form action="/pres_search/" method="post">
+				   {% csrf_token %}
 				<div class="search">
 					<input type="search" value="Search"  name="search" style="margin-left:100px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
 				</div>
@@ -90,7 +91,7 @@
 							<nav class="menu menu--francisco">
 									<ul class="nav navbar-nav menu__list">
 										<li class="menu__item menu__item--current"><a href="{% url 'first_panel:index' %}" class="menu__link"><span class="menu__helper">Home</span></a></li>
-                                        <li class="menu__item"><a href="#" class="menu__link med_tog"><span class="menu__helper">Medicine</span></a></li>
+										<li class="menu__item"><a href="#" class="menu__link med_tog"><span class="menu__helper">Medicine</span></a></li>
 										<li class="menu__item"><a href="#" class="menu__link presc"><span class="menu__helper">Prescription</span></a></li>
 										<li class="menu__item"><a href="#" class="menu__link toggle"><span class="menu__helper">Login</span></a></li>
 										<li class="menu__item"><a href="/registration_page/" class="menu__link"><span class="menu__helper">Register</span></a></li>
@@ -104,20 +105,6 @@
 
 			   <div class="clearfix"></div>
 			</div>
-	</div>
-
-
-	<div class="pres">
-			 {% if data %}
-			 {% for i in data %}
-			 <div class="dis">
-				 <a href="{% url 'backend_panel:prescription_detail' %}?id={{i.id}}" class="same_cls">{{ i.dis_name }}</a>
-			 </div>
-			 {% endfor %}
-			 <div class="view-all">
-				 <a href="/prescription/" class="view">View all</a>
-			 </div>
-			 {% endif %}
 	</div>
 
 	<div class="med_cat">

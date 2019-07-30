@@ -14,7 +14,7 @@ Admin Index
 							</div>
 							<div class="four-text">
 								<h3>User</h3>
-								<h4> 24,420  </h4>
+								<h4>{{ u_count }}</h4>
 
 							</div>
 
@@ -27,7 +27,7 @@ Admin Index
 							</div>
 							<div class="four-text">
 								<h3>Categories</h3>
-								<h4>4</h4>
+								<h4>{{ c_count }}</h4>
 
 							</div>
 
@@ -40,8 +40,7 @@ Admin Index
 							</div>
 							<div class="four-text">
 								<h3>Medicines</h3>
-								<h4>12,430</h4>
-
+								<h4>{{ m_count }}</h4>
 							</div>
 
 						</div>
@@ -53,8 +52,7 @@ Admin Index
 							</div>
 							<div class="four-text">
 								<h3>Diseases</h3>
-								<h4>14,430</h4>
-
+								<h4>{{ d_count }}</h4>
 							</div>
 
 						</div>
@@ -81,7 +79,7 @@ Admin Index
                                             </div>
                                         </div>
 
-                                        <div class="widget-body p-15">
+                                        <div class="widget-body p-15" style="overflow:scroll;height:519px;">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -93,7 +91,7 @@ Admin Index
                                                 <tbody>
                                                       {% if data %}
                                                        {% for name in data %}
-                                                      <tr>
+                                                      <tr style="overflow:scroll">
                                                           <td>{{ name.email }}</td>
                                                           <td>{{ name.name }}</td>
                                                           <td>{{ name.gender }}</td>
@@ -116,11 +114,12 @@ Admin Index
                                 <div class="card-header">
                                     <h3>Medicines</h3>
                                 </div>
-								{% if med_data %}
-								{% for i in med_data %}
-                                <div class="card-body p-b-20">
+                                <div class="card-body p-b-20" style="overflow:scroll;height:510px;">
+                                    {% if med_data %}
+                                    {% for i in med_data %}
                                     <div class="list-group">
                                         <a class="list-group-item media">
+
                                              <div class="pull-left">
                                                 <img class="lg-item-img" src="../media/{{ i.image }}" alt="">
                                             </div>
@@ -141,9 +140,9 @@ Admin Index
                                             </div>
                                         </a>
                                    	</div>
-                                </div>
-								{% endfor %}
+                                    {% endfor %}
 								{% endif %}
+                                </div>
                             </div>
 							</div>
                       	</div>
@@ -155,7 +154,7 @@ Admin Index
                                             <h4 class="widget-title">Diseases</h4>
                                         </header>
                                         <hr class="widget-separator">
-                                        <div class="widget-body">
+                                        <div class="widget-body" style="overflow:scroll;height:482px;">
                                             <div class="streamline">
 												{% if des_data %}
 												{% for i in des_data %}

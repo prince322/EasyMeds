@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse,redirect
 from first_panel.forms import RoleDetailsForm
 from first_panel.models import RoleDetails, UserRole
-from backend_panel.models import MedicineDetails,MedicinesCategory,Diseases
+from backend_panel.models import MedicineDetails,MedicinesCategory,Diseases, Relation, Precautions, Symptoms
 from django.contrib.auth.hashers import make_password,check_password
 from miscFiles.genericFunction import generate_string,link_send,otp_generate,otp_send
 from django.core.files.storage import FileSystemStorage
@@ -145,7 +145,19 @@ def admin_index(request):
         med_data = MedicineDetails.objects.all()
         cat_data = MedicinesCategory.objects.all()
         des_data = Diseases.objects.all()
-        return render(request, "adminindex.html",{'data':data,'admin_no':admin_no,'med_data':med_data,'cat_data':cat_data,'des_data':des_data})
+        m_count = 0
+        d_count = 0
+        c_count = 0
+        u_count = 0
+        for i in med_data:
+            m_count += 1
+        for j in des_data:
+            d_count += 1
+        for k in cat_data:
+            c_count += 1
+        for l in data:
+            u_count += 1
+        return render(request, "adminindex.html",{'m_count':m_count,'d_count':d_count,'c_count':c_count,'u_count':u_count,'data':data,'admin_no':admin_no,'med_data':med_data,'cat_data':cat_data,'des_data':des_data})
     else:
         aut, msg = auth
         if msg == "wrongUser":
@@ -161,7 +173,7 @@ def logout(request):
     return redirect("/")
 
 def admin_update_profile(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         get_email = request.session['email']
         user_image = None
         try:
@@ -208,3 +220,45 @@ def user_search(request):
             return render(request, "user_search.html", {'data':data})
         except:
             return redirect("/adminindex/")
+
+def aleophetic_details(request):
+    data = MedicineDetails.objects.filter(cat_id=13)
+    return render(request, "alphetic.html", {'data':data})
+
+def homopathic(request):
+    data =  MedicineDetails.objects.filter(cat_id=15)
+    return render(request, "homopathic.html",{'data':data})
+
+def ayurvedic(request):
+    data =  MedicineDetails.objects.filter(cat_id=14)
+    return render(request, "Ayurvedic.html",{'data':data})
+
+def medicine_detail(request):
+    get_id = request.GET['id']
+    m_data = MedicineDetails.objects.get(id=get_id)
+    c_id = m_data.cat_id
+    c_data = MedicinesCategory.objects.get(id=c_id)
+    des_data = Relation.objects.get(med_id = get_id)
+    return render(request, "next_page.html",{'m_data': m_data,'c_data':c_data})
+
+def pres_search(request):
+    if request.method == "POST":
+        get_dis_name = request.POST['search']
+        try:
+            d_data = Diseases.objects.filter(dis_name=get_dis_name)
+            for i in d_data:
+                get_id = i.id
+            dis_data = Diseases.objects.get(id = get_id)
+            prec_data = Precautions.objects.filter(dis_id=get_id)
+            sym_data = Symptoms.objects.filter(dis_id=get_id)
+            med_data = Relation.objects.filter(dis_id=get_id)
+            m_data = MedicineDetails.objects.all()
+            c_data = MedicinesCategory.objects.all()
+            return render(request, "prescription_detail.html", {'dis_data': dis_data,'prec_data':prec_data,'sym_data':sym_data,'m_data':m_data,'med_data':med_data,'c_data':c_data})
+        except:
+            return redirect("/home/")
+
+
+
+
+

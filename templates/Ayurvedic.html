@@ -16,7 +16,7 @@ Ayurvedic
                 <div class="caption">
                     <h3>{{ i.med_name|slice:"23" }}</h3>
                     <p>{{ i.price }}</p>
-                    <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+                    <div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-left:63px; padding-top:7px; margin-left:8px;"><a href="{% url 'first_panel:medicine_detail' %}?id={{i.id}}" style="color:white; font-style:bold">Click here!</a></div>
                 </div>
             </div>
         </div>
