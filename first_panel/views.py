@@ -69,18 +69,23 @@ def login(request):
     if request.method == "POST":
         get_email= request.POST['username']
         get_password = request.POST['password']
-        data = RoleDetails.objects.get(email=get_email)
-        user_password=data.password
-        role = data.role_id
-        if check_password(get_password, user_password):
-            request.session['email'] = data.email
-            request.session['role'] = role
-            request.session['authenticate'] = True
-            request.session['name'] = data.name
-            if role == 1:
-                return redirect("/adminindex/")
-            elif role == 2:
-                pass
+        try:
+            data = RoleDetails.objects.get(email=get_email)
+            user_password=data.password
+            role = data.role_id
+            if check_password(get_password, user_password):
+                request.session['email'] = data.email
+                request.session['role'] = role
+                request.session['authenticate'] = True
+                request.session['name'] = data.name
+                if role == 1:
+                    return redirect("/adminindex/")
+                elif role == 2:
+                    pass
+            else:
+                return HttpResponse("Please enter correct password")
+        except:
+            return HttpResponse("Login Failed")
     return render(request,"index.html")
 
 
@@ -105,6 +110,8 @@ def update_password(request):
             update.save(update_fields=['active', 'verify_link', 'password'])
             request.session['email'] = ""
             return redirect("/home/")
+        else:
+            return HttpResponse("Please enter same password")
     return render(request, "updatePassword.html")
 
 
@@ -234,29 +241,45 @@ def ayurvedic(request):
     return render(request, "Ayurvedic.html",{'data':data})
 
 def medicine_detail(request):
-    get_id = request.GET['id']
-    m_data = MedicineDetails.objects.get(id=get_id)
-    c_id = m_data.cat_id
-    c_data = MedicinesCategory.objects.get(id=c_id)
-    des_data = Relation.objects.get(med_id = get_id)
-    return render(request, "next_page.html",{'m_data': m_data,'c_data':c_data})
+    auth = authorization(request.session['authenticate'], request.session['role'], 4)
+    if auth == True:
+        get_id = request.GET['id']
+        m_data = MedicineDetails.objects.get(id=get_id)
+        c_id = m_data.cat_id
+        c_data = MedicinesCategory.objects.get(id=c_id)
+        des_data = Relation.objects.get(med_id = get_id)
+        return render(request, "next_page.html",{'m_data': m_data,'c_data':c_data})
+    else:
+        aut, msg = auth
+        if msg == "wrongUser":
+            return HttpResponse("You are not a valid user")
+        elif msg == "notLogin":
+            return HttpResponse("Please login to access this page")
 
 def pres_search(request):
     if request.method == "POST":
-        get_dis_name = request.POST['search']
-        try:
-            d_data = Diseases.objects.filter(dis_name=get_dis_name)
-            for i in d_data:
-                get_id = i.id
-            dis_data = Diseases.objects.get(id = get_id)
-            prec_data = Precautions.objects.filter(dis_id=get_id)
-            sym_data = Symptoms.objects.filter(dis_id=get_id)
-            med_data = Relation.objects.filter(dis_id=get_id)
-            m_data = MedicineDetails.objects.all()
-            c_data = MedicinesCategory.objects.all()
-            return render(request, "prescription_detail.html", {'dis_data': dis_data,'prec_data':prec_data,'sym_data':sym_data,'m_data':m_data,'med_data':med_data,'c_data':c_data})
-        except:
-            return redirect("/home/")
+        auth = authorization(request.session['authenticate'], request.session['role'], 4)
+        if auth == True:
+            get_dis_name = request.POST['search']
+            try:
+                d_data = Diseases.objects.filter(dis_name=get_dis_name)
+                for i in d_data:
+                    get_id = i.id
+                dis_data = Diseases.objects.get(id = get_id)
+                prec_data = Precautions.objects.filter(dis_id=get_id)
+                sym_data = Symptoms.objects.filter(dis_id=get_id)
+                med_data = Relation.objects.filter(dis_id=get_id)
+                m_data = MedicineDetails.objects.all()
+                c_data = MedicinesCategory.objects.all()
+                return render(request, "prescription_detail.html", {'dis_data': dis_data,'prec_data':prec_data,'sym_data':sym_data,'m_data':m_data,'med_data':med_data,'c_data':c_data})
+            except:
+                return redirect("/home/")
+        else:
+            aut, msg = auth
+            if msg == "wrongUser":
+                return HttpResponse("You are not a valid user")
+            elif msg == "notLogin":
+                return HttpResponse("Please login to access this page")
 
 
 

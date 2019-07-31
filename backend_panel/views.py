@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, DiseasesForm, SymptomsForm, RelationForm, PrecautionsForm
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms,Relation, Precautions
 from django.core.files.storage import FileSystemStorage
+from miscFiles.autherize import authorization
 
 
 # Create your views here.
@@ -220,15 +221,22 @@ def disease(request):
     return render(request, "prescription.html",{'data':data})
 
 def prescription_detail(request):
-    get_id = request.GET['id']
-    dis_data = Diseases.objects.get(id=get_id)
-    prec_data = Precautions.objects.filter(dis_id = get_id)
-    sym_data = Symptoms.objects.filter(dis_id=get_id)
-    med_data = Relation.objects.filter(dis_id = get_id )
-    m_data = MedicineDetails.objects.all()
-    c_data = MedicinesCategory.objects.all()
-    return render(request,"prescription_detail.html",{'med_data':med_data,'c_data':c_data,'m_data':m_data,'dis_data':dis_data, 'sym_data':sym_data, 'prec_data':prec_data})
-
+    auth = authorization(request.session['authenticate'], request.session['role'], 4)
+    if auth == True:
+        get_id = request.GET['id']
+        dis_data = Diseases.objects.get(id=get_id)
+        prec_data = Precautions.objects.filter(dis_id = get_id)
+        sym_data = Symptoms.objects.filter(dis_id=get_id)
+        med_data = Relation.objects.filter(dis_id = get_id )
+        m_data = MedicineDetails.objects.all()
+        c_data = MedicinesCategory.objects.all()
+        return render(request,"prescription_detail.html",{'med_data':med_data,'c_data':c_data,'m_data':m_data,'dis_data':dis_data, 'sym_data':sym_data, 'prec_data':prec_data})
+    else:
+        aut, msg = auth
+        if msg == "wrongUser":
+            return HttpResponse("You are not a valid user")
+        elif msg == "notLogin":
+            return HttpResponse("Please login to access this page")
 def gallery(request):
     data = MedicineDetails.objects.all()
     return render(request,"gallery.html",{'data':data})

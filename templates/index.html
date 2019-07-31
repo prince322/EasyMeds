@@ -267,7 +267,7 @@ EasyMeds
 										<div class="caption">
 											<h3 style="font-weight:bold;">{{ j.med_name|slice:"20" }}</h3>
 											<p>{{ j.price }}</p>
-											<div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-top:7px; margin-left:14px;"><a href="#" style="color:white; font-style:bold">Click here!</a></div>
+											<div class="hua" style="height:36px; width:214px; background-color:#23b5b9; padding-top:7px; margin-left:14px;"><a href="{% url 'first_panel:medicine_detail' %}?id={{j.id}}" style="color:white; font-style:bold">Click here!</a></div>
 										</div>
 									</div>
 								</li>
