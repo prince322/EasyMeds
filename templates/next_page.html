@@ -8,11 +8,12 @@ Medicine_usage
     <div class="col-sm-12 h1 text-center" style="background-color:rgba(225,40,50,1); height:80px; margin-top:0px; color:white; margin-bottom:30px;padding-top:18px;"><h1>{{ m_data.med_name }}</h1></div>
     <div>
     <img  src="../media/{{ m_data.image }}" alt="/" style="height:250px; width:250px; float:left; margin-left:100px; margin-right:100px;">
-    <p style="font-weight:bold; padding-top:220px;">{{ m_data.med_name }}</p>
-    <p >Price: {{ m_data.price }}</p>
-    <p style="">Desc:{{ m_data.description }}</p>
+    <p style="font-weight:bold; padding-top:135px; font-size:25px;">{{ m_data.med_name }}</p>
+    <p style="padding-top:55px; color:white;">Price: {{ m_data.price }}</p>
+        <div style="width:1000px;"><p style="padding-top:15px; color:white; ">Desc: {{ m_data.description }}</p>
+        </div>
     {% if c_data %}
-        <label> Category:</label><span>{{ c_data.type }}</span>
+        <label style="padding-top:15px; color:white"> Category:  </label><span style="color:white;" >{{ c_data.type }}</span>
     {% endif %}
     </div>
     {% endif %}
