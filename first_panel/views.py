@@ -66,6 +66,38 @@ def registration(request):
 
 
 def login(request):
+    data = Diseases.objects.all()
+    a_data = MedicineDetails.objects.filter(cat_id=13)
+    h_data = MedicineDetails.objects.filter(cat_id=15)
+    y_data = MedicineDetails.objects.filter(cat_id=14)
+    half_data = []
+    count = 0
+    allopath = []
+    dount = 0
+    homopath = []
+    eount = 0
+    ayurved = []
+    fount = 0
+    for i in data:
+        if count == 9:
+            break
+        half_data.append(i)
+        count += 1
+    for j in a_data:
+        if dount == 4:
+            break
+        allopath.append(j)
+        dount += 1
+    for k in h_data:
+        if eount == 4:
+            break
+        homopath.append(k)
+        eount += 1
+    for l in y_data:
+        if fount == 4:
+            break
+        ayurved.append(l)
+        fount += 1
     if request.method == "POST":
         get_email= request.POST['username']
         get_password = request.POST['password']
@@ -79,14 +111,14 @@ def login(request):
                 request.session['authenticate'] = True
                 request.session['name'] = data.name
                 if role == 1:
-                    return redirect("/adminindex/")
+                    return redirect("/adminindex/",{'data':half_data,'a_data':allopath,'h_data':homopath,'y_data':ayurved})
                 elif role == 2:
                     pass
             else:
                 return HttpResponse("Please enter correct password")
         except:
             return HttpResponse("Login Failed")
-    return render(request,"index.html")
+    return render(request,"index.html",{'data':half_data,'a_data':allopath,'h_data':homopath,'y_data':ayurved})
 
 
 def verify_link(request):

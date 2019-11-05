@@ -3,8 +3,6 @@ from backend_panel.forms import MedicinesCategoryForm, MedicineDetailsForm, Dise
 from backend_panel.models import MedicinesCategory, MedicineDetails, Diseases, Symptoms,Relation, Precautions
 from django.core.files.storage import FileSystemStorage
 from miscFiles.autherize import authorization
-
-
 # Create your views here.
 
 
